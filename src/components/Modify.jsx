@@ -35,8 +35,10 @@ const Modify = () => {
       <div className="theme">
         <div className="time">알림음</div> <span>기본</span>
       </div>
-      <button className="button">취소</button>
-      <button className="button">완료</button>
+      <div className="button-wrap">
+        <button className="button">취소</button>
+        <button className="button">완료</button>
+      </div>
     </div>
   );
 };

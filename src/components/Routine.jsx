@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-export default function Routine() {
-  return <div></div>;
-}
-=======
 import { useEffect, useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import './Routine.scss';
@@ -79,4 +74,3 @@ const Routine = () => {
 };
 
 export default Routine;
->>>>>>> e0f99dcbd352a82ff57fe030a80ac547ef1a03e7

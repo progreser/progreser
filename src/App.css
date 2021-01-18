@@ -1,5 +1,9 @@
 .App {
   width: 375px;
   overflow-y: hidden;
+<<<<<<< HEAD
+=======
+  background-color: #dbe4ff;
+>>>>>>> c3cafee8b373103f753cb5541e3e5a9258231239
   margin: 0 auto;
 }

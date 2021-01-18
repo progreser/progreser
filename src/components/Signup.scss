@@ -1,0 +1,61 @@
+.Signup {
+  padding: 10px;
+  h1 {
+    margin-bottom: 5px;
+    margin-left: -5px;
+  }
+  p {
+    margin: 8px 0 20px;
+    color: #a8a8a8;
+  }
+  div {
+    margin-bottom: 20px;
+    label {
+      display: block;
+      padding-bottom: 5px;
+    }
+    input:not([type='checkbox']) {
+      width: 100%;
+      height: 40px;
+      border: 1px solid rgb(204, 204, 204);
+      box-sizing: border-box;
+      border-radius: 5px;
+      padding-left: 14px;
+      outline: none;
+    }
+    li {
+      display: inline-block;
+    }
+  }
+  .gender-list li {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #5ce1e6;
+    color: #fff;
+    margin-right: 5px;
+    font-weight: 700;
+  }
+  .check-div {
+    margin: 20px 0;
+  }
+  .check-div * {
+    vertical-align: middle;
+  }
+  .check-div input {
+    margin: 0;
+  }
+  .check-div span {
+    padding-left: 8px;
+    font-size: 13px;
+  }
+  button[type='submit'] {
+    display: block;
+    width: 100%;
+    height: 46px;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #5ce1e6;
+    color: #fff;
+    border: none;
+  }
+}

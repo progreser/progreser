@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import './Routine.scss';
 import { MdAccessTime } from 'react-icons/md';
 import { GiHistogram } from 'react-icons/gi';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import Moment from 'react-moment';
+import 'moment/locale/ko';
+import moment from 'moment';
 // const todos = [{id: 1, message: }];
 
 const Lilist = () => {
@@ -29,10 +32,14 @@ const Lilist = () => {
 };
 
 const Routine = () => {
+  console.log(moment().format());
+
   return (
     <div className="Routine">
       <div className="header">
-        <time>1.11(월) 3:19 pm</time>
+        <time>
+          <Moment interval={1000} format="M.DD (dd) hh:mm A" />
+        </time>
         <h1>평온한 오후입니다.</h1>
       </div>
       <ul className="section">

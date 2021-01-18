@@ -1,10 +1,10 @@
-import './App.css';
 import { Route, Switch } from 'react-router-dom';
-
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Routine from './components/Routine';
 import Modify from './components/Modify';
+import './App.css';
+
 function App() {
   return (
     <div className="App">

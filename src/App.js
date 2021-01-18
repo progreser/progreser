@@ -4,11 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Routine from './components/Routine';
-<<<<<<< HEAD
-
-=======
 import Modify from './components/Modify';
->>>>>>> e0f99dcbd352a82ff57fe030a80ac547ef1a03e7
 function App() {
   return (
     <div className="App">

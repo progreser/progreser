@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Routin from './components/Routine';
+import Routine from './components/Routine';
 import Modify from './components/Modify';
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/modify" component={Modify} />
         <Route path="/signup" component={Signup} />
-        <Route path="/" exact component={Routin} />
+        <Route path="/" exact component={Routine} />
       </Switch>
     </div>
   );

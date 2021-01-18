@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import { Divider } from 'semantic-ui-react';
-
-export default function Mpdify() {
-  return <div>Mpdi</div>;
-}
-=======
 import React from 'react';
 import './Modify.scss';
 
@@ -51,4 +44,3 @@ const Modify = () => {
 };
 
 export default Modify;
->>>>>>> e0f99dcbd352a82ff57fe030a80ac547ef1a03e7

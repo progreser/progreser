@@ -1,26 +1,22 @@
-import React, { useCallback, useRef, useState } from 'react';
-import userService from '../modules/services/AuthService';
+import React, { useCallback, useRef } from 'react';
 import './Signup.scss';
 
 export default function Signup({ onSign }) {
-  // const id = useRef();
-  // const pass = useRef();
-  // const name = useRef();
-  const form = useRef();
-
-  // const fail = useRef();
-
+  const id = useRef();
+  const pass = useRef();
+  const name = useRef();
+  const failid = useRef();
+  const formData = useRef();
   const Submit = useCallback(
     e => {
       e.preventDefault();
-      const signupInfo = new FormData(form.current);
-      const signup = {};
-      for (let [key, value] of signupInfo.entries()) {
-        signup[key] = value;
+      const obj = {};
+      const formData = new FormData(e.target);
+      for (let [key, value] of formData.entries()) {
+        obj[key] = value;
       }
-      onSign(signup);
-      console.log(onSign(signup));
-      //onSign(id.current.value, name.current.value, pass.current.value);
+      console.log(obj);
+      onSign(obj);
     },
     [onSign],
   );
@@ -29,16 +25,16 @@ export default function Signup({ onSign }) {
     <div className="Signup">
       <h1>만나서 반가워요!</h1>
       <p>알찬 하루를 보낼 준비가 됐나요?</p>
-      <form onSubmit={Submit}>
+      <form onSubmit={Submit} ref={formData}>
         <div>
-          <label htmlFor="user-id" ref={form}>
+          <label htmlFor="user-id" ref={failid}>
             이메일
           </label>
-          <input type="email" required name="user-id" ref={form} />
+          <input type="email" required name="user-id" ref={id} />
         </div>
         <div>
           <label htmlFor="user-pass">비밀번호</label>
-          <input type="password" required name="user-pass" ref={form} />
+          <input type="password" required name="user-pass" ref={pass} />
         </div>
         <div>
           <label htmlFor="user-repass">비밀번호</label>
@@ -46,7 +42,7 @@ export default function Signup({ onSign }) {
         </div>
         <div>
           <label htmlFor="user-name">이름</label>
-          <input type="text" required name="user-name" ref={form} />
+          <input type="text" required name="user-name" ref={name} />
         </div>
         <div>
           <label>성별</label>
@@ -60,7 +56,7 @@ export default function Signup({ onSign }) {
           <input type="text" required name="user-birth" />
         </div>
         <div class="check-div">
-          <input type="checkbox" />
+          <input type="checkbox" name="user-ok" />
           <span>마이루틴의 이용약관과 개인정 취급방식에 동의합니다.</span>
         </div>
         <button type="submit">하루 관리 시작하기</button>

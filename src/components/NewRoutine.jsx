@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import './NewRoutine.scss';
-import { useRef, useCallback } from 'react';
 
 const NewRoutine = ({ onNewRoutine }) => {
   const form = useRef();
@@ -14,7 +13,6 @@ const NewRoutine = ({ onNewRoutine }) => {
         routine[key] = value;
       }
       onNewRoutine(routine);
-      console.log(onNewRoutine(routine));
     },
     [onNewRoutine],
   );

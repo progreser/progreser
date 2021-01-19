@@ -1,8 +1,8 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Routine from './components/Routine';
-import SignContainer from './containers/SignupContainer';
-import NewRoutineContainer from './container/NewRoutineContair';
+//import NewRoutine from './components/NewRoutine';
+
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -11,6 +11,9 @@ import { rootReducer, rootSaga } from './modules/root';
 import LoginContainer from './containers/LoginContainer';
 import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
+import SignContainer from './containers/SignContainer';
+import NewRoutineContainer from './containers/NewRoutineContainer';
+
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
@@ -28,8 +31,8 @@ function App() {
         <ConnectedRouter history={history}>
           <Switch>
             <Route path="/login" component={LoginContainer} />
-            <Route path="/NewRoutine" component={NewRoutineContainer} />
-            <Route path="/signup" component={SignupContainer} />
+            <Route path="/newroutine" component={NewRoutineContainer} />
+            <Route path="/signup" component={SignContainer} />
             <Route path="/" exact component={Routine} />
           </Switch>
         </ConnectedRouter>

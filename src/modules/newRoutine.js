@@ -8,7 +8,7 @@ const NEWSUCCESS = 'newRoutine/SUCCESS';
 const NEWFAIL = 'newRoutine/FAIL';
 
 export const newStart = createAction(NEWSTART, routine => routine);
-const newSuccess = createAction(NEWSUCCESS, (id, pass) => ({ id, pass }));
+const newSuccess = createAction(NEWSUCCESS, routine => routine);
 const newfail = createAction(NEWFAIL);
 
 // 리듀서함수제작
@@ -29,16 +29,10 @@ export default newRoutine;
 
 function* newRoutineSaga({ payload }) {
   try {
-    const loginUser = yield call(axios.get, `/users/${payload.id}`);
-    if (loginUser.data.pass !== payload.pass) {
-      throw new Error('비밀번호가 달라요');
-    }
+    const { id } = JSON.parse(localStorage.getItem('token'));
+    console.log(yield call(axios.get, `/users/${id}?routine`));
+    // const loginUser = yield call(axios.post, `/users/${id}/routine`, );
     yield put(newSuccess(payload));
-    const user = {
-      id: loginUser.data.id,
-      name: loginUser.data.name,
-    };
-    localStorage.setItem('token', JSON.stringify(user));
     yield put(push('/'));
   } catch (error) {
     yield put(newfail(error));

@@ -39,9 +39,13 @@ export default userinfo;
 function* loginSaga({ payload }) {
   try {
     const loginUser = yield call(axios.get, `/users/${payload.id}`);
-    console.log(loginUser.data);
-    loginUser.data.pass === +payload.pass ? yield put(loginSuccess()) : yield put(loginfail());
+    if (loginUser.data.pass !== +payload.pass) {
+      throw new Error('비밀번호가 달라요');
+    }
+    yield put(loginSuccess(payload));
+    localStorage.setItem('token', JSON.stringify(loginUser.data.name));
     yield put(push('/'));
+    console.log(localStorage.getItem('token'));
   } catch (error) {
     yield put(loginfail(error));
   }

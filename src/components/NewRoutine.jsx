@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import './NewRoutine.scss';
 
-const NewRoutine = ({ onNewRoutine }) => {
+const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
 
   const onSubmit = useCallback(
@@ -12,11 +12,11 @@ const NewRoutine = ({ onNewRoutine }) => {
       for (let [key, value] of formdata.entries()) {
         routine[key] = value;
       }
-      onNewRoutine(routine);
+      onRoutine(routine);
     },
-    [onNewRoutine],
+    [onRoutine],
   );
-    
+
   return (
     <div className="Modify">
       <h1>

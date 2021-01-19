@@ -43,7 +43,8 @@ function* loginSaga({ payload }) {
       throw new Error('비밀번호가 달라요');
     }
     yield put(loginSuccess(payload));
-    localStorage.setItem('token', JSON.stringify(loginUser.data.name));
+    const user = { id: loginUser.data.id, name: loginUser.data.name };
+    localStorage.setItem('token', JSON.stringify(user));
     yield put(push('/'));
     console.log(localStorage.getItem('token'));
   } catch (error) {

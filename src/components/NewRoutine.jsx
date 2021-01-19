@@ -24,7 +24,6 @@ const NewRoutine = ({ onNewRoutine }) => {
       </h1>
       <form onSubmit={onSubmit} ref={form}>
         <input type="text" placeholder="루틴 이름 입력" name="routine" />
-        <input type="text" placeholder="루틴 이름 입력" name="routine2" />
         <ul>
           <li>일</li>
           <li>월</li>

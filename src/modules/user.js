@@ -49,7 +49,6 @@ function* loginSaga({ payload }) {
     };
     localStorage.setItem('token', JSON.stringify(user));
     yield put(push('/'));
-    console.log(localStorage.getItem('token'));
   } catch (error) {
     yield put(loginfail(error));
   }

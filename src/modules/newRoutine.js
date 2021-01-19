@@ -7,7 +7,7 @@ const NEWSTART = 'newRoutine/START';
 const NEWSUCCESS = 'newRoutine/SUCCESS';
 const NEWFAIL = 'newRoutine/FAIL';
 
-export const newStart = createAction(NEWSTART, (id, pass) => ({ id, pass }));
+export const newStart = createAction(NEWSTART, routine => routine);
 const newSuccess = createAction(NEWSUCCESS, (id, pass) => ({ id, pass }));
 const newfail = createAction(NEWFAIL);
 

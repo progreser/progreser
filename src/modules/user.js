@@ -3,11 +3,6 @@ import { push } from 'connected-react-router';
 import { createAction, handleActions } from 'redux-actions';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-// const prefix = 'progeser/user';
-// Action 타입 만들기
-// const prefix = 'progeser/user';
-// type
-
 const LOGINSTART = 'login/START';
 const LOGINSUCCESS = 'login/SUCCESS';
 const LOGINFAIL = 'login/FAIL';

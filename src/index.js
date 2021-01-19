@@ -10,11 +10,6 @@ const history = createBrowserHistory();
 // // import { createStore } from 'redux';
 // import { Provider } from 'react-redux';
 // const store = createStore();
-ReactDOM.render(
-  <ConnectedRouter history={history}>
-    <App />
-  </ConnectedRouter>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 reportWebVitals();

@@ -8,7 +8,7 @@ export default function Login({ onLogin }) {
   const onSubmit = useCallback(
     e => {
       e.preventDefault();
-      console.log(onLogin(id.current.value, pass.current.value));
+
       onLogin(id.current.value, pass.current.value);
     },
     [onLogin],

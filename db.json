@@ -1,15 +1,17 @@
 {
   "users": [
     {
-      "id": "jungjh565@naver.com",
+      "id": "jungj123@naver.com",
       "name": "정지훈",
       "pass": "wjdwlgns",
+      "birth": "정지훈",
       "routine": []
     },
     {
-      "id": "jungjh123@naver.com",
-      "name": "정지훈",
-      "pass": "wjdwlgns1474",
+      "id": "jungjh1231@naver.com",
+      "name": "123",
+      "pass": "123",
+      "birth": "123",
       "routine": []
     }
   ]

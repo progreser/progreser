@@ -35,7 +35,10 @@ function* newRoutineSaga({ payload }) {
     }
     yield put(newSuccess(payload));
     console.log('ddd');
-    localStorage.setItem('token', JSON.stringify(loginUser.data.name));
+    localStorage.setItem(
+      'token',
+      JSON.stringify({ id: loginUser.data.id, name: loginUser.data.name }),
+    );
     yield put(push('/'));
   } catch (error) {
     yield put(newfail(error));

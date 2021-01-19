@@ -1,11 +1,6 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Routine from './components/Routine';
-import NewRoutine from './components/NewRoutine';
-
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -16,6 +11,7 @@ import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import SignContainer from './containers/SignContainer';
 import NewRoutineContainer from './containers/NewRoutineContainer';
+import Routine from './components/Routine';
 
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();

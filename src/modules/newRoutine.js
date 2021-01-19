@@ -34,8 +34,11 @@ function* newRoutineSaga({ payload }) {
       throw new Error('비밀번호가 달라요');
     }
     yield put(newSuccess(payload));
-    console.log('ddd');
-    localStorage.setItem('token', JSON.stringify(loginUser.data.name));
+    const user = {
+      id: loginUser.data.id,
+      name: loginUser.data.name,
+    };
+    localStorage.setItem('token', JSON.stringify(user));
     yield put(push('/'));
   } catch (error) {
     yield put(newfail(error));

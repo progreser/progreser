@@ -16,7 +16,7 @@ const NewRoutine = ({ onNewRoutine }) => {
     },
     [onNewRoutine],
   );
-    
+
   return (
     <div className="Modify">
       <h1>

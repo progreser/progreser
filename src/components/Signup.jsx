@@ -3,16 +3,24 @@ import userService from '../modules/services/AuthService';
 import './Signup.scss';
 
 export default function Signup({ onSign }) {
-  const id = useRef();
-  const pass = useRef();
-  const name = useRef();
+  // const id = useRef();
+  // const pass = useRef();
+  // const name = useRef();
+  const form = useRef();
 
-  const failid = useRef();
+  // const fail = useRef();
 
   const Submit = useCallback(
     e => {
       e.preventDefault();
-      onSign(id.current.value, name.current.value, pass.current.value);
+      const signupInfo = new FormData(form.current);
+      const signup = {};
+      for (let [key, value] of signupInfo.entries()) {
+        signup[key] = value;
+      }
+      onSign(signup);
+      console.log(onSign(signup));
+      //onSign(id.current.value, name.current.value, pass.current.value);
     },
     [onSign],
   );
@@ -23,14 +31,14 @@ export default function Signup({ onSign }) {
       <p>알찬 하루를 보낼 준비가 됐나요?</p>
       <form onSubmit={Submit}>
         <div>
-          <label htmlFor="user-id" ref={failid}>
+          <label htmlFor="user-id" ref={form}>
             이메일
           </label>
-          <input type="email" required name="user-id" ref={id} />
+          <input type="email" required name="user-id" ref={form} />
         </div>
         <div>
           <label htmlFor="user-pass">비밀번호</label>
-          <input type="password" required name="user-pass" ref={pass} />
+          <input type="password" required name="user-pass" ref={form} />
         </div>
         <div>
           <label htmlFor="user-repass">비밀번호</label>
@@ -38,7 +46,7 @@ export default function Signup({ onSign }) {
         </div>
         <div>
           <label htmlFor="user-name">이름</label>
-          <input type="text" required name="user-name" ref={name} />
+          <input type="text" required name="user-name" ref={form} />
         </div>
         <div>
           <label>성별</label>

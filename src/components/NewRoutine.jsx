@@ -1,7 +1,7 @@
 import React from 'react';
-import './Modify.scss';
+import './NewRoutine.scss';
 
-const Modify = () => {
+const NewRoutine = () => {
   return (
     <div className="Modify">
       <h1>
@@ -43,4 +43,4 @@ const Modify = () => {
   );
 };
 
-export default Modify;
+export default NewRoutine;

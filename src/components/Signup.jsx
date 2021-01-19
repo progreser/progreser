@@ -12,6 +12,7 @@ export default function Signup({ onSign }) {
   const Submit = useCallback(
     e => {
       e.preventDefault();
+      console.log();
       onSign(id.current.value, name.current.value, pass.current.value);
     },
     [onSign],

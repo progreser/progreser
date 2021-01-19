@@ -11,7 +11,7 @@ const NewRoutineContainer = () => {
     return <Redirect to="/login" />;
   }
 
-  const onRoutine = (id, name, pass) => dispatch(newStart(id, name, pass));
+  const onRoutine = routine => dispatch(newStart(routine));
   return <NewRoutine onRoutine={onRoutine} />;
 };
 

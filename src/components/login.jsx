@@ -1,5 +1,4 @@
 import { useCallback, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import './Login.scss';
 
 export default function Login({ onLogin }) {
@@ -9,12 +8,12 @@ export default function Login({ onLogin }) {
   const onSubmit = useCallback(
     e => {
       e.preventDefault();
-      console.log(onLogin);
-      console.log(id.current.value, pass.current.value);
+
       onLogin(id.current.value, pass.current.value);
     },
     [onLogin],
   );
+
   return (
     <div className="Login">
       <img src="./progreser.png" alt="logo-img" className="logo" />

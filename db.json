@@ -1,9 +1,15 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "박상언",
-      "pass": 11111,
+      "id": "jungjh565@naver.com",
+      "name": "정지훈",
+      "pass": "wjdwlgns",
+      "routine": []
+    },
+    {
+      "id": "jungjh123@naver.com",
+      "name": "정지훈",
+      "pass": "wjdwlgns1474",
       "routine": []
     }
   ]

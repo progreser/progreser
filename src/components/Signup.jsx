@@ -3,15 +3,19 @@ import userService from '../modules/services/AuthService';
 import './Signup.scss';
 
 export default function Signup({ onSign }) {
+  // const form = useRef();
   const id = useRef();
   const pass = useRef();
   const name = useRef();
-
   const failid = useRef();
 
   const Submit = useCallback(
     e => {
       e.preventDefault();
+      // console.log(form.current.id);
+
+      // const newform = new FormData().append();
+      // console.log(newform);
       onSign(id.current.value, name.current.value, pass.current.value);
     },
     [onSign],

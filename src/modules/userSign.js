@@ -30,9 +30,10 @@ function* signSaga({ payload }) {
     const loginUser = yield call(axios.get, `/users`);
     console.log(payload);
     if (loginUser.data.id === payload.id) return;
+    console.log(payload.pass, typeof payload.pass);
     const signuser = { id: payload.id, name: payload.name, pass: payload.pass, routine: [] };
     yield put(signupSuccess(payload));
-    yield call(axios.post, `/users/`, signuser);
+    yield call(axios.post, `/users`, signuser);
     yield put(push('/login'));
   } catch (error) {
     yield put(signupFail(error));

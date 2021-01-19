@@ -16,7 +16,6 @@ const LOGINSTART = 'login/START';
 const LOGINSUCCESS = 'login/SUCCESS';
 const LOGINFAIL = 'login/FAIL';
 
-
 export const loginStart = createAction(LOGINSTART, (id, pass) => ({ id, pass }));
 const loginSuccess = createAction(LOGINSUCCESS, (id, pass) => ({ id, pass }));
 const loginfail = createAction(LOGINFAIL);
@@ -45,7 +44,6 @@ function* loginSaga({ payload }) {
     yield put(push('/'));
   } catch (error) {
     yield put(loginfail(error));
-
   }
 }
 

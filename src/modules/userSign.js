@@ -7,8 +7,8 @@ const SIGNUPSTART = 'sign/START';
 const SIGNUPSUCCESS = 'sign/SUCCESS';
 const SIGNUPFAIL = 'sign/FAIL';
 
-export const signupStart = createAction(SIGNUPSTART, (id, name, pass) => ({ id, name, pass }));
-const signupSuccess = createAction(SIGNUPSUCCESS, (id, name, pass) => ({ id, name, pass }));
+export const signupStart = createAction(SIGNUPSTART, user => user);
+const signupSuccess = createAction(SIGNUPSUCCESS, user => user);
 const signupFail = createAction(SIGNUPFAIL);
 
 const signinfo = handleActions(
@@ -28,11 +28,17 @@ export default signinfo;
 function* signSaga({ payload }) {
   try {
     const loginUser = yield call(axios.get, `/users`);
-    console.log(payload);
-    if (loginUser.data.id === payload.id) return;
-    const signuser = { id: payload.id, name: payload.name, pass: payload.pass, routine: [] };
+    console.log(payload['user-id']);
+    if (loginUser.data.id === payload['user-id']) return;
+    const signuser = {
+      id: payload['user-id'],
+      name: payload['user-name'],
+      pass: payload['user-pass'],
+      birth: payload['user-birth'],
+      routine: [],
+    };
     yield put(signupSuccess(payload));
-    yield call(axios.post, `/users/`, signuser);
+    yield call(axios.post, `/users`, signuser);
     yield put(push('/login'));
   } catch (error) {
     yield put(signupFail(error));

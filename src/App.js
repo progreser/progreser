@@ -15,6 +15,8 @@ import LoginContainer from './containers/LoginContainer';
 import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import SignContainer from './containers/SignContainer';
+import NewRoutineContainer from './containers/NewRoutineContainer';
+
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
@@ -32,7 +34,7 @@ function App() {
         <ConnectedRouter history={history}>
           <Switch>
             <Route path="/login" component={LoginContainer} />
-            <Route path="/newroutine" component={NewRoutine} />
+            <Route path="/newroutine" component={NewRoutineContainer} />
             <Route path="/signup" component={SignContainer} />
             <Route path="/" exact component={Routine} />
           </Switch>

@@ -39,7 +39,7 @@ export default userinfo;
 function* loginSaga({ payload }) {
   try {
     const loginUser = yield call(axios.get, `/users/${payload.id}`);
-    if (loginUser.data.pass !== +payload.pass) {
+    if (loginUser.data.pass !== payload.pass) {
       throw new Error('비밀번호가 달라요');
     }
     yield put(loginSuccess(payload));

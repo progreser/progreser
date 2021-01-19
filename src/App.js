@@ -16,6 +16,7 @@ import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import SignContainer from './containers/SignContainer';
 import NewRoutineContainer from './containers/NewRoutineContainer';
+
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef } from 'react';
-import './Modify.scss';
+import './NewRoutine.scss';
 
 const NewRoutine = ({ onNewRoutine }) => {
   const form = useRef();
@@ -16,7 +16,7 @@ const NewRoutine = ({ onNewRoutine }) => {
     },
     [onNewRoutine],
   );
-
+    
   return (
     <div className="Modify">
       <h1>

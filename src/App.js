@@ -11,10 +11,10 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer, rootSaga } from './modules/root';
-import LoginContainer from './containers/login';
+import LoginContainer from './containers/LoginContainer';
 import { ConnectedRouter, routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import SignContainer from './containers/sign';
+import SignContainer from './containers/SignContainer';
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 

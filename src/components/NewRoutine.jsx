@@ -21,7 +21,7 @@ const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
   const audio = useRef();
 
-  const [alram, setAlram] = useState('');
+  const [alarm, setAlarm] = useState('');
 
   let message = '1번 울리기';
   const [state, setState] = useState(message);
@@ -38,9 +38,9 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '토', value: '토' },
   ];
 
-  const onAlramChange = alram => {
-    setAlram(alram);
-    audio.current.src = `./audio/${alram}.mp3`;
+  const onAlarmChange = alarm => {
+    setAlarm(alarm);
+    audio.current.src = `./audio/${alarm}.mp3`;
     audio.current.play();
   };
 
@@ -117,9 +117,9 @@ const NewRoutine = ({ onRoutine }) => {
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
-        <div className="theme">
-          <Form.Item name="frequency">
-            <Select defaultValue="알람 없음" onChange={onAlramChange}>
+        <div className="alarm">
+          <Form.Item name="alarm">
+            <Select defaultValue="알람 없음" onChange={onAlarmChange}>
               <Select value="none">알람 없음</Select>
               <Select value="bell">벨 소리</Select>
               <Select value="knock">노크 소리</Select>

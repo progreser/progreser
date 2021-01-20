@@ -5,7 +5,12 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
-      "routine": []
+      "routines": [
+        {
+          "routine": "바보",
+          "date": []
+        }
+      ]
     },
     {
       "id": "jungjh1231@naver.com",

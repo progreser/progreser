@@ -30,8 +30,8 @@ export default newRoutine;
 function* newRoutineSaga({ payload }) {
   try {
     const { id } = JSON.parse(localStorage.getItem('token'));
-    console.log(yield call(axios.get, `/users/${id}?routine`));
-    // const loginUser = yield call(axios.post, `/users/${id}/routine`, );
+    const res = yield call(axios.get, `/users/${id}`);
+    console.log(res);
     yield put(newSuccess(payload));
     yield put(push('/'));
   } catch (error) {

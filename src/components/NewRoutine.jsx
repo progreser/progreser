@@ -3,6 +3,7 @@ import './NewRoutine.scss';
 import 'antd/dist/antd.css';
 import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import moment from '../../node_modules/moment/moment';
 const { Option } = Select;
 
 const NewRoutine = ({ onRoutine }) => {
@@ -52,6 +53,8 @@ const NewRoutine = ({ onRoutine }) => {
 
   const onFinish = values => {
     console.log('Received values of form: ', values);
+    const now = new Date();
+    console.log(moment('24/12/2019 09:15:00').format(now, 'hh:mm'));
   };
 
   const bellChange = e => {};

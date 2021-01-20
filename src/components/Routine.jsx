@@ -12,8 +12,8 @@ import moment from 'moment';
 
 const Lilist = () => {
   const [state, setState] = useState([
-    { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
-    { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
+    { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
+    { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
   ]);
   console.log(state);
   return state.map(todo => {

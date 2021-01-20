@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Routine from './components/Routine';
 import SignContainer from './containers/SignupContainer';
-import NewRoutineContainer from './container/NewRoutineContair';
+import NewRoutineContainer from './containers/NewRoutineContainer';
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -29,7 +29,7 @@ function App() {
           <Switch>
             <Route path="/login" component={LoginContainer} />
             <Route path="/NewRoutine" component={NewRoutineContainer} />
-            <Route path="/signup" component={SignupContainer} />
+            <Route path="/signup" component={SignContainer} />
             <Route path="/" exact component={Routine} />
           </Switch>
         </ConnectedRouter>

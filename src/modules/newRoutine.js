@@ -1,10 +1,17 @@
+import { createAction, handleActions } from 'redux-actions';
+import axios from '../../node_modules/axios/index';
+import { push } from 'connected-react-router';
+import { call, put, takeEvery } from 'redux-saga/effects';
+
 const NEWSTART = 'newRoutine/START';
 const NEWSUCCESS = 'newRoutine/SUCCESS';
 const NEWFAIL = 'newRoutine/FAIL';
 
-export const newStart = createAction(NEWSTART, () => ({ id, name, pass }));
-const newSuccess = createAction(NEWSUCCESS, (id, name, pass) => ({ id, name, pass }));
-const newFail = createAction(NEWFAIL);
+export const newStart = createAction(NEWSTART, routine => routine);
+const newSuccess = createAction(NEWSUCCESS, routine => ({ routine }));
+const newfail = createAction(NEWFAIL);
+
+// 리듀서함수제작
 
 const newRoutine = handleActions(
   {
@@ -13,23 +20,24 @@ const newRoutine = handleActions(
       ...state,
       ...payload,
     }),
-    [NEWFAIL]: (state, { payload }) => ({ ...state, error: payload }),
+    [NEWFAIL]: state => ({ ...state }),
   },
   {},
 );
+
 export default newRoutine;
 
 function* newRoutineSaga({ payload }) {
   try {
-    const loginUser = yield call(axios.get, `/users`);
-    console.log(payload);
-    if (loginUser.data.id === payload.id) return;
-    const signuser = { id: payload.id, name: payload.name, pass: payload.pass, routine: [] };
-    yield put(signupSuccess(payload));
-    yield call(axios.post, `/users/`, signuser);
-    yield put(push('/login'));
+    const { id } = JSON.parse(localStorage.getItem('token'));
+    console.log(yield call(axios.get, `/users/${id}?=routine`));
+    // const loginUser = yield call(axios.post, `/users/${id}/routine`);
+
+    yield put(newSuccess(payload));
+    console.log('ddd');
+    // yield put(push('/'));
   } catch (error) {
-    yield put(signupFail(error));
+    yield put(newfail(error));
   }
 }
 

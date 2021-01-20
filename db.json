@@ -4,13 +4,13 @@
       "id": 1,
       "name": "박상언",
       "pass": 11111,
-      "routine": []
+      "routines": []
     },
     {
       "id": "favor@naver.com",
       "name": "조윤아",
       "pass": "1234",
-      "routine": []
+      "routines": []
     }
   ]
 }

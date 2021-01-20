@@ -68,8 +68,9 @@ const NewRoutine = ({ onRoutine }) => {
     console.log(state);
   };
 
-  const onFinish = values => {
-    console.log('Received values of form: ', values);
+  const onFinish = routine => {
+    console.log('Received values of form: ', routine);
+    onRoutine(routine);
   };
 
   return (

@@ -1,19 +1,29 @@
-
 import React, { useCallback, useRef, useState } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
-import { Switch } from 'antd';
-import { Menu, Dropdown, Button } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import {
+  Form,
+  Input,
+  Menu,
+  Dropdown,
+  Button,
+  Checkbox,
+  Switch,
+  Radio,
+  Select,
+  DatePicker,
+  TimePicker,
+} from 'antd';
+import moment from 'moment';
+import { IoIosArrowRoundForward } from 'react-icons/io';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
   const menuBtn = useRef();
-  let message = '';
+  let message = '1번 울리기';
   const [state, setState] = useState(message);
 
-const NewRoutine = ({ onRoutine }) => {
-  const form = useRef();
+  const format = 'HH:mm';
 
   const options = [
     { label: '일', value: '일' },
@@ -25,10 +35,6 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '토', value: '토' },
   ];
 
-  function onChange(checkedValues) {
-    console.log('checked = ', checkedValues);
-  }
-
   const onSubmit = useCallback(
     e => {
       e.preventDefault();
@@ -37,66 +43,73 @@ const NewRoutine = ({ onRoutine }) => {
       for (let [key, value] of formdata.entries()) {
         routine[key] = value;
       }
+      console.log(routine);
       onRoutine(routine);
     },
     [onRoutine],
   );
+
   function onChange(checked) {
     console.log(`switch to ${checked}`);
   }
+
   const click = e => {
     console.log(e.item.props.value);
     setState(e.item.props.value);
     console.log(state);
   };
-  const menu = (
-    <Menu onClick={click}>
-      <Menu.Item value="1번 울리기">
-        <button ref={menuBtn} className="menu-btn">
-          1번 울리기
-        </button>
-      </Menu.Item>
-      <Menu.Item value="1분단위로 3번 울리기">
-        <button className="menu-btn" value="1분단위로 3번 울리기">
-          1분단위로 3번 울리기
-        </button>
-      </Menu.Item>
-      <Menu.Item value="5분 간격 3번 울리기">
-        <button value="5분 간격 3번 울리기" className="menu-btn">
-          5분 간격 3번 울리기
-        </button>
-      </Menu.Item>
-    </Menu>
-  );
+
+  const onFinish = values => {
+    console.log('Received values of form: ', values);
+  };
+
   return (
     <div className="Modify">
       <h1>
         + New <br /> Routine
       </h1>
-      <form onSubmit={onSubmit} ref={form}>
-        <input type="text" placeholder="루틴 이름 입력" name="routine" />
-        <Checkbox.Group options={options} onChange={onChange} 
+      <Form onFinish={onFinish} ref={form}>
+        <Form.Item name="routine">
+          <Input placeholder="새 루틴을 추가해주세요" />
+        </Form.Item>
+        <Form.Item name="day">
+          <Checkbox.Group options={options} onChange={onChange} />
+        </Form.Item>
+
         <h2>시작 알림</h2>
         <div className="theme">
           <div className="toggle">
             <div className="active">활성화</div>
-            <Switch defaultChecked onChange={onChange} />
+            <Form.Item name="alram">
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
           </div>
         </div>
         <div className="theme">
-          <div className="time">시간</div> <span>0:00</span>
+          <div className="time">시간</div>
+          <Form.Item name="startTime">
+            <TimePicker placeholder="Start Time" format={format} />
+          </Form.Item>
+          <IoIosArrowRoundForward />
+          <Form.Item name="endTime">
+            <TimePicker placeholder="End Time" format={format} />
+          </Form.Item>
         </div>
         <div className="theme">
           <div className="frequency">빈도</div>
           <span>
-            <Dropdown overlay={menu} placement="bottomLeft">
-              <Button>{state}</Button>
-            </Dropdown>
+            <Form.Item name="frequency">
+              <Select defaultValue="1번 울리기">
+                <Select value="1번 울리기">1번 울리기</Select>
+                <Select value="1분단위로 3번 울리기">1분단위로 3번 울리기</Select>
+                <Select value="5분 간격 3번 울리기">5분 간격 3번 울리기</Select>
+              </Select>
+            </Form.Item>
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="theme">
-          <div className="time"></div>
+          <div className="time">시간</div>
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">
@@ -106,7 +119,7 @@ const NewRoutine = ({ onRoutine }) => {
             완료
           </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 };

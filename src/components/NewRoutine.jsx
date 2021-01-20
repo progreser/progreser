@@ -19,7 +19,10 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
-  const menuBtn = useRef();
+  const audio = useRef();
+
+  const [alram, setAlram] = useState('');
+
   let message = '1번 울리기';
   const [state, setState] = useState(message);
 
@@ -34,6 +37,12 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '금', value: '금' },
     { label: '토', value: '토' },
   ];
+
+  const onAlramChange = alram => {
+    setAlram(alram);
+    audio.current.src = `./audio/${alram}.mp3`;
+    audio.current.play();
+  };
 
   const onSubmit = useCallback(
     e => {
@@ -109,7 +118,13 @@ const NewRoutine = ({ onRoutine }) => {
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="theme">
-          <div className="time">시간</div>
+          <Form.Item name="frequency">
+            <Select defaultValue="알람 없음" onChange={onAlramChange}>
+              <Select value="none">알람 없음</Select>
+              <Select value="bell">벨 소리</Select>
+              <Select value="knock">노크 소리</Select>
+            </Select>
+          </Form.Item>
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">
@@ -120,6 +135,9 @@ const NewRoutine = ({ onRoutine }) => {
           </button>
         </div>
       </Form>
+      <audio controls ref={audio} autoplay>
+        <source src="" type="audio/mp3" />
+      </audio>
     </div>
   );
 };

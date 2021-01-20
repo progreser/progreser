@@ -1,20 +1,11 @@
-
 import React, { useCallback, useRef, useState } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
 import { Switch } from 'antd';
-import { Menu, Dropdown, Button } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Menu, Dropdown, Button, Input, Select, Checkbox, Form } from 'antd';
+const { Option } = Select;
 
 const NewRoutine = ({ onRoutine }) => {
-  const form = useRef();
-  const menuBtn = useRef();
-  let message = '';
-  const [state, setState] = useState(message);
-
-const NewRoutine = ({ onRoutine }) => {
-  const form = useRef();
-
   const options = [
     { label: '일', value: '일' },
     { label: '월', value: '월' },
@@ -25,62 +16,46 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '토', value: '토' },
   ];
 
-  function onChange(checkedValues) {
-    console.log('checked = ', checkedValues);
-  }
-
-  const onSubmit = useCallback(
-    e => {
-      e.preventDefault();
-      const formdata = new FormData(form.current);
-      const routine = {};
-      for (let [key, value] of formdata.entries()) {
-        routine[key] = value;
-      }
-      onRoutine(routine);
-    },
-    [onRoutine],
-  );
+  // const onFinish = useCallback(
+  //   e => {
+  //     e.preventDefault();
+  //     const formdata = new FormData(form.current);
+  //     const routine = {};
+  //     for (let [key, value] of formdata.entries()) {
+  //       routine[key] = value;
+  //     }
+  //     onRoutine(routine);
+  //   },
+  //   [onRoutine],
+  // );
   function onChange(checked) {
     console.log(`switch to ${checked}`);
   }
-  const click = e => {
-    console.log(e.item.props.value);
-    setState(e.item.props.value);
-    console.log(state);
+
+  const onFinish = values => {
+    console.log('Received values of form: ', values);
   };
-  const menu = (
-    <Menu onClick={click}>
-      <Menu.Item value="1번 울리기">
-        <button ref={menuBtn} className="menu-btn">
-          1번 울리기
-        </button>
-      </Menu.Item>
-      <Menu.Item value="1분단위로 3번 울리기">
-        <button className="menu-btn" value="1분단위로 3번 울리기">
-          1분단위로 3번 울리기
-        </button>
-      </Menu.Item>
-      <Menu.Item value="5분 간격 3번 울리기">
-        <button value="5분 간격 3번 울리기" className="menu-btn">
-          5분 간격 3번 울리기
-        </button>
-      </Menu.Item>
-    </Menu>
-  );
+
   return (
     <div className="Modify">
       <h1>
         + New <br /> Routine
       </h1>
-      <form onSubmit={onSubmit} ref={form}>
-        <input type="text" placeholder="루틴 이름 입력" name="routine" />
-        <Checkbox.Group options={options} onChange={onChange} 
+      {/* <form onSubmit={onSubmit} ref={form}> */}
+      <Form name="validate_other" onFinish={onFinish}>
+        <Form.Item name="routine">
+          <Input type="text" placeholder="루틴 이름 입력" name="routine" />
+        </Form.Item>
+        <Form.Item name="select">
+          <Checkbox.Group options={options} />
+        </Form.Item>
         <h2>시작 알림</h2>
         <div className="theme">
           <div className="toggle">
             <div className="active">활성화</div>
-            <Switch defaultChecked onChange={onChange} />
+            <Form.Item name="alram">
+              <Switch defaultChecked checkedChildren onChange={onChange} />
+            </Form.Item>
           </div>
         </div>
         <div className="theme">
@@ -89,9 +64,13 @@ const NewRoutine = ({ onRoutine }) => {
         <div className="theme">
           <div className="frequency">빈도</div>
           <span>
-            <Dropdown overlay={menu} placement="bottomLeft">
-              <Button>{state}</Button>
-            </Dropdown>
+            <Form.Item name="name-sele">
+              <Select placeholder="Please select a country">
+                <Option value="1번 울리기">1번 울리기</Option>
+                <Option value="1분단위로 3번 울리기">1분단위로 3번 울리기</Option>
+                <Option value="5분 간격 3번 울리기">5분 간격 3번 울리기</Option>
+              </Select>
+            </Form.Item>
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
@@ -106,7 +85,7 @@ const NewRoutine = ({ onRoutine }) => {
             완료
           </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 };

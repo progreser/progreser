@@ -3,8 +3,7 @@ import './NewRoutine.scss';
 import 'antd/dist/antd.css';
 import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
 import { IoIosArrowRoundForward } from 'react-icons/io';
-import moment from '../../node_modules/moment/moment';
-const { Option } = Select;
+import date from 'date-and-time';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
@@ -52,15 +51,21 @@ const NewRoutine = ({ onRoutine }) => {
   }
 
   const onFinish = values => {
-    console.log('Received values of form: ', values);
-    const now = new Date();
-    console.log(moment('24/12/2019 09:15:00').format(now, 'hh:mm'));
+    let getValues = values;
+
+    // const now = `${getValues.startTime._d.getHours()}:${getValues.startTime._d.getMinutes()}`;
+    getValues = {
+      ...values,
+      startTime: date.format(getValues.startTime._d, 'hh:mm'),
+      endTime: date.format(getValues.endTime._d, 'hh:mm'),
+    };
+    onRoutine(getValues);
   };
 
   const bellChange = e => {};
 
   return (
-    <div className="Modify">
+    <div className="NewRoutine">
       <h1>
         + New <br /> Routine
       </h1>
@@ -96,16 +101,16 @@ const NewRoutine = ({ onRoutine }) => {
           <span>
             <Form.Item name="frequency">
               <Select defaultValue="1번 울리기">
-                <Option value="1번 울리기">1번 울리기</Option>
-                <Option value="1분단위로 3번 울리기">1분단위로 3번 울리기</Option>
-                <Option value="5분 간격 3번 울리기">5분 간격 3번 울리기</Option>
+                <Select value="1번 울리기">1번 울리기</Select>
+                <Select value="1분단위로 3번 울리기">1분단위로 3번 울리기</Select>
+                <Select value="5분 간격 3번 울리기">5분 간격 3번 울리기</Select>
               </Select>
             </Form.Item>
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="alarm">
-          <Form.Item name="alarm">
+          <Form.Item name="alarmSound">
             <Select defaultValue="알람 없음" onChange={onAlarmChange}>
               <Select value="none">알람 없음</Select>
               <Select value="bell">벨 소리</Select>

@@ -25,6 +25,18 @@
       "pass": "123",
       "birth": "950812",
       "routine": []
+    },
+    {
+      "id": "1234@naver.com",
+      "name": "오오오 뭐야",
+      "pass": "12341234",
+      "routine": []
+    },
+    {
+      "id": "asd@asdasd",
+      "name": "asd",
+      "pass": "asda",
+      "routine": []
     }
   ]
 }

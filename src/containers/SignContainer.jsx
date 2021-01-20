@@ -5,7 +5,7 @@ import { signupStart } from '../modules/userSign';
 
 const SignContainer = () => {
   const dispatch = useDispatch();
-  const onSign = (id, name, pass) => dispatch(signupStart(id, name, pass));
+  const onSign = user => dispatch(signupStart(user));
   return <Signup onSign={onSign} />;
 };
 

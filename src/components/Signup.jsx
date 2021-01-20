@@ -1,21 +1,22 @@
-import React, { useCallback, useRef, useState } from 'react';
-import userService from '../modules/services/AuthService';
+import React, { useCallback, useRef } from 'react';
 import './Signup.scss';
 
 export default function Signup({ onSign }) {
   const id = useRef();
   const pass = useRef();
   const name = useRef();
-
-  const form = useRef();
-  console.log(form.current);
-
   const failid = useRef();
-
+  const formData = useRef();
   const Submit = useCallback(
     e => {
       e.preventDefault();
-      onSign(id.current.value, name.current.value, pass.current.value);
+      const obj = {};
+      const formData = new FormData(e.target);
+      for (let [key, value] of formData.entries()) {
+        obj[key] = value;
+      }
+      console.log(obj);
+      onSign(obj);
     },
     [onSign],
   );
@@ -24,7 +25,7 @@ export default function Signup({ onSign }) {
     <div className="Signup">
       <h1>만나서 반가워요!</h1>
       <p>알찬 하루를 보낼 준비가 됐나요?</p>
-      <form onSubmit={Submit} ref={form}>
+      <form onSubmit={Submit} ref={formData}>
         <div>
           <label htmlFor="user-id" ref={failid}>
             이메일
@@ -55,7 +56,7 @@ export default function Signup({ onSign }) {
           <input type="text" required name="user-birth" />
         </div>
         <div class="check-div">
-          <input type="checkbox" />
+          <input type="checkbox" name="user-ok" />
           <span>마이루틴의 이용약관과 개인정 취급방식에 동의합니다.</span>
         </div>
         <button type="submit">하루 관리 시작하기</button>

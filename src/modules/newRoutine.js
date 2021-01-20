@@ -1,15 +1,17 @@
-import { push } from 'connected-react-router';
 import { createAction, handleActions } from 'redux-actions';
-import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from '../../node_modules/axios/index';
+import { push } from 'connected-react-router';
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 const NEWSTART = 'newRoutine/START';
 const NEWSUCCESS = 'newRoutine/SUCCESS';
 const NEWFAIL = 'newRoutine/FAIL';
 
-export const newStart = createAction(NEWSTART, (id, pass) => ({ id, pass }));
-const newSuccess = createAction(NEWSUCCESS, (id, pass) => ({ id, pass }));
-const newFail = createAction(NEWSUCCESS);
+export const newStart = createAction(NEWSTART, routine => routine);
+const newSuccess = createAction(NEWSUCCESS, routine => routine);
+const newfail = createAction(NEWFAIL);
+
+// 리듀서함수제작
 
 const newRoutine = handleActions(
   {
@@ -25,20 +27,20 @@ const newRoutine = handleActions(
 
 export default newRoutine;
 
-function* NewRoutineSaga({ payload }) {
+function* newRoutineSaga({ payload }) {
   try {
-    const loginUser = yield call(axios.get, `/users/${payload.id}`);
-    if (loginUser.data.pass !== payload.pass) {
-      throw new Error('비밀번호가 달라요');
-    }
+    const { id } = JSON.parse(localStorage.getItem('token'));
+    console.log(yield call(axios.get, `/users/${id}?=routine`));
+    // const loginUser = yield call(axios.post, `/users/${id}/routine`);
+
     yield put(newSuccess(payload));
-    localStorage.setItem('token', JSON.stringify(loginUser.data.name));
-    yield put(push('/'));
+    console.log('ddd');
+    // yield put(push('/'));
   } catch (error) {
-    yield put(newFail(error));
+    yield put(newfail(error));
   }
 }
 
-export function* RoutineSaga() {
-  yield takeEvery(NEWSTART, NewRoutineSaga);
+export function* routineSaga() {
+  yield takeEvery(NEWSTART, newRoutineSaga);
 }

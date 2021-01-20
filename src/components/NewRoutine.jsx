@@ -118,7 +118,7 @@ const NewRoutine = ({ onRoutine }) => {
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="alarm">
-          <Form.Item name="alarm">
+          <Form.Item name="alarmSound">
             <Select defaultValue="알람 없음" onChange={onAlarmChange}>
               <Select value="none">알람 없음</Select>
               <Select value="bell">벨 소리</Select>

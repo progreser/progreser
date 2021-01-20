@@ -7,7 +7,7 @@
   box-sizing: border-box;
   min-height: 812px;
   max-height: 812px;
-
+ 
   h1 {
     border-bottom: 2px solid #37b24d;
     font-family: 'Russo One', sans-serif;
@@ -67,9 +67,19 @@
     border-radius: 10px;
     box-sizing: border-box;
     margin-bottom: 1rem;
-
+    align-items: center;
     span {
       color: #adb5bd;
+      display: flex;
+      align-items: center;
+      .ant-btn {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background: none;
+        border-bottom: 1px solid;
+      }
+      
     }
 
     .time {
@@ -122,4 +132,12 @@
       }
     }
   }
+}
+
+
+
+.menu-btn {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  border: 0;
 }

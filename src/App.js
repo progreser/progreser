@@ -1,8 +1,14 @@
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
+<<<<<<< HEAD
 import Routine from './components/Routine';
 import SignContainer from './containers/SignupContainer';
 import NewRoutineContainer from './containers/NewRoutineContainer';
+=======
+
+import Routine from './components/Routine';
+
+>>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';

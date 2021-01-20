@@ -1,13 +1,45 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import './NewRoutine.scss';
+<<<<<<< HEAD
 import { useRef, useCallback } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Switch, TimePicker } from 'antd';
+=======
+import 'antd/dist/antd.css';
+import {
+  Form,
+  Input,
+  Menu,
+  Dropdown,
+  Button,
+  Checkbox,
+  Switch,
+  Radio,
+  Select,
+  DatePicker,
+  TimePicker,
+} from 'antd';
+>>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
 import moment from 'moment';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
+  const menuBtn = useRef();
+  let message = '1번 울리기';
+  const [state, setState] = useState(message);
+
+  const format = 'HH:mm';
+
+  const options = [
+    { label: '일', value: '일' },
+    { label: '월', value: '월' },
+    { label: '화', value: '화' },
+    { label: '수', value: '수' },
+    { label: '목', value: '목' },
+    { label: '금', value: '금' },
+    { label: '토', value: '토' },
+  ];
 
   const onSubmit = useCallback(
     e => {
@@ -17,8 +49,13 @@ const NewRoutine = ({ onRoutine }) => {
       for (let [key, value] of formdata.entries()) {
         routine[key] = value;
       }
+<<<<<<< HEAD
       onRoutine(routine);
       console.log(onRoutine(routine));
+=======
+      console.log(routine);
+      onRoutine(routine);
+>>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
     },
     [onRoutine],
   );
@@ -26,10 +63,22 @@ const NewRoutine = ({ onRoutine }) => {
   function onChange(checked) {
     console.log(`switch to ${checked}`);
   }
+<<<<<<< HEAD
   const format = 'HH:mm';
 
   const onFinish = values => {
     console.log(values);
+=======
+
+  const click = e => {
+    console.log(e.item.props.value);
+    setState(e.item.props.value);
+    console.log(state);
+  };
+
+  const onFinish = values => {
+    console.log('Received values of form: ', values);
+>>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
   };
 
   return (
@@ -38,6 +87,7 @@ const NewRoutine = ({ onRoutine }) => {
         + New <br /> Routine
       </h1>
       <Form onFinish={onFinish} ref={form}>
+<<<<<<< HEAD
         <Form.Item>
           <input type="text" placeholder="루틴 이름 입력" name="routine" />
         </Form.Item>
@@ -50,11 +100,26 @@ const NewRoutine = ({ onRoutine }) => {
           <li>금</li>
           <li>토</li>
         </ul>
+=======
+        <Form.Item name="routine">
+          <Input placeholder="새 루틴을 추가해주세요" />
+        </Form.Item>
+        <Form.Item name="day">
+          <Checkbox.Group options={options} onChange={onChange} />
+        </Form.Item>
+
+>>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
         <h2>시작 알림</h2>
         <div className="theme">
           <div className="toggle">
             <div className="active">활성화</div>
+<<<<<<< HEAD
             <Switch defaultChecked onChange={onChange} />
+=======
+            <Form.Item name="alram">
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+>>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
           </div>
         </div>
         <div className="theme">
@@ -69,11 +134,19 @@ const NewRoutine = ({ onRoutine }) => {
         </div>
         <div className="theme">
           <div className="frequency">빈도</div>
-          <span>한번 울리기</span>
+          <span>
+            <Form.Item name="frequency">
+              <Select defaultValue="1번 울리기">
+                <Select value="1번 울리기">1번 울리기</Select>
+                <Select value="1분단위로 3번 울리기">1분단위로 3번 울리기</Select>
+                <Select value="5분 간격 3번 울리기">5분 간격 3번 울리기</Select>
+              </Select>
+            </Form.Item>
+          </span>
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="theme">
-          <div className="time">알림음</div> <span>기본</span>
+          <div className="time">시간</div>
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">

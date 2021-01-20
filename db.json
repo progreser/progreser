@@ -13,6 +13,13 @@
       "pass": "123",
       "birth": "123",
       "routine": []
+    },
+    {
+      "id": "jungjh565@naver.com",
+      "name": "정지훈",
+      "pass": "123",
+      "birth": "950812",
+      "routine": []
     }
   ]
 }

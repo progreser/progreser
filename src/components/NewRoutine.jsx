@@ -1,9 +1,27 @@
 import React, { useCallback, useRef } from 'react';
+import 'antd/dist/antd.css';
+import { Checkbox } from 'antd';
 import './NewRoutine.scss';
+import { Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
-  console.log(onRoutine);
+
+  const options = [
+    { label: '일', value: '일' },
+    { label: '월', value: '월' },
+    { label: '화', value: '화' },
+    { label: '수', value: '수' },
+    { label: '목', value: '목' },
+    { label: '금', value: '금' },
+    { label: '토', value: '토' },
+  ];
+
+  function onChange(checkedValues) {
+    console.log('checked = ', checkedValues);
+  }
+
   const onSubmit = useCallback(
     e => {
       e.preventDefault();
@@ -24,15 +42,7 @@ const NewRoutine = ({ onRoutine }) => {
       </h1>
       <form onSubmit={onSubmit} ref={form}>
         <input type="text" placeholder="루틴 이름 입력" name="routine" />
-        <ul>
-          <li>일</li>
-          <li>월</li>
-          <li>화</li>
-          <li>수</li>
-          <li>목</li>
-          <li>금</li>
-          <li>토</li>
-        </ul>
+        <Checkbox.Group options={options} onChange={onChange} />
         <h2>시작 알림</h2>
         <div className="theme">
           <div className="toggle">
@@ -49,7 +59,7 @@ const NewRoutine = ({ onRoutine }) => {
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="theme">
-          <div className="time">알림음</div> <span>기본</span>
+          <div className="time"></div>
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">

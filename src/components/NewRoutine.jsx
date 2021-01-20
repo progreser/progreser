@@ -1,19 +1,34 @@
-
 import React, { useCallback, useRef, useState } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
-import { Switch } from 'antd';
-import { Menu, Dropdown, Button } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import {
+  Menu,
+  Dropdown,
+  TimePicker,
+  Input,
+  Form,
+  Select,
+  InputNumber,
+  Switch,
+  Radio,
+  Slider,
+  Button,
+  Upload,
+  Rate,
+  Checkbox,
+  Row,
+  Col,
+} from 'antd';
+import moment from 'moment';
+const { Option } = Select;
+
+const format = 'HH:mm';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
   const menuBtn = useRef();
-  let message = '';
+  let message = '1번 울리기';
   const [state, setState] = useState(message);
-
-const NewRoutine = ({ onRoutine }) => {
-  const form = useRef();
 
   const options = [
     { label: '일', value: '일' },
@@ -25,9 +40,9 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '토', value: '토' },
   ];
 
-  function onChange(checkedValues) {
-    console.log('checked = ', checkedValues);
-  }
+  const onFinish = value => {
+    console.log(value);
+  };
 
   const onSubmit = useCallback(
     e => {
@@ -73,47 +88,52 @@ const NewRoutine = ({ onRoutine }) => {
       <h1>
         + New <br /> Routine
       </h1>
-<<<<<<< HEAD
-      <input type="text" placeholder="루틴 이름 입력" />
-      <ul>
-        <li>일</li>
-        <li>월</li>
-        <li>화</li>
-        <li>수</li>
-        <li>목</li>
-        <li>금</li>
-        <li>토</li>
-      </ul>
-      <h2>시작 알림</h2>
-      <div className="theme">
-        <div className="toggle">
-          <div className="active">활성화</div>
-          <div className="box"></div>
-=======
-      <form onSubmit={onSubmit} ref={form}>
+      <Form onFinish={onFinish} ref={form}>
         <input type="text" placeholder="루틴 이름 입력" name="routine" />
-        <Checkbox.Group options={options} onChange={onChange} 
+        <Form.Item name="Day">
+          <Checkbox.Group options={options} onChange={onChange} />
+        </Form.Item>
         <h2>시작 알림</h2>
         <div className="theme">
           <div className="toggle">
             <div className="active">활성화</div>
-            <Switch defaultChecked onChange={onChange} />
+            <Form.Item name="Active">
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
           </div>
         </div>
         <div className="theme">
-          <div className="time">시간</div> <span>0:00</span>
+          <div className="time">시간</div>
+          <span>
+            <Form.Item name="First-Time">
+              <TimePicker defaultValue={moment('12:08', format)} format={format} />
+            </Form.Item>
+            <Form.Item name="Last-Time">
+              <TimePicker defaultValue={moment('12:08', format)} format={format} />
+            </Form.Item>
+          </span>
         </div>
         <div className="theme">
           <div className="frequency">빈도</div>
           <span>
-            <Dropdown overlay={menu} placement="bottomLeft">
-              <Button>{state}</Button>
-            </Dropdown>
+            <Form.Item name="Drop">
+              <Select defaultValue="1번 울리기">
+                <Select value="1번 울리기">1번 울리기</Select>
+                <Select value="1분단위로 3번 울리기">1분단위로 3번 울리기</Select>
+                <Select value="5분 간격 3번 울리기">5분 간격 3번 울리기</Select>
+              </Select>
+            </Form.Item>
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="theme">
-          <div className="time"></div>
+          <Form.Item name="bell">
+            <Select defaultValue="1번 울리기">
+              <Select value="1번 울리기">1번 울리기</Select>
+              <Select value="1분단위로 3번 울리기">1분단위로 3번 울리기</Select>
+              <Select value="5분 간격 3번 울리기">5분 간격 3번 울리기</Select>
+            </Select>
+          </Form.Item>
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">
@@ -122,24 +142,8 @@ const NewRoutine = ({ onRoutine }) => {
           <button className="button" type="submit">
             완료
           </button>
->>>>>>> d6d149991f8d49278e7d30d8b2989a967f2e6ead
         </div>
-      </div>
-      <div className="theme">
-        <div className="time">시간</div> <span>0:00</span>
-      </div>
-      <div className="theme">
-        <div className="frequency">빈도</div>
-        <span>한번 울리기</span>
-      </div>
-      <h2>타이머 종료 알림</h2>
-      <div className="theme">
-        <div className="time">알림음</div> <span>기본</span>
-      </div>
-      <div className="button-wrap">
-        <button className="button">취소</button>
-        <button className="button">완료</button>
-      </div>
+      </Form>
     </div>
   );
 };

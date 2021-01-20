@@ -7,11 +7,6 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 // const prefix = 'progeser/user';
 
 // Action 타입 만들기
-
-// const prefix = 'progeser/user';
-
-// type\
-
 const LOGINSTART = 'login/START';
 const LOGINSUCCESS = 'login/SUCCESS';
 const LOGINFAIL = 'login/FAIL';
@@ -43,8 +38,14 @@ function* loginSaga({ payload }) {
       throw new Error('비밀번호가 달라요');
     }
     yield put(loginSuccess(payload));
+<<<<<<< HEAD
     localStorage.setItem('token', JSON.stringify(loginUser.data.name));
+=======
+    const user = { id: loginUser.data.id, name: loginUser.data.name };
+    localStorage.setItem('token', JSON.stringify(user));
+>>>>>>> 933a2b3974f5d5443cf7a514a7ac5cfd47ec07b9
     yield put(push('/'));
+    console.log(localStorage.getItem('token'));
   } catch (error) {
     yield put(loginfail(error));
   }

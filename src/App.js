@@ -3,7 +3,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Routine from './components/Routine';
 import NewRoutine from './components/NewRoutine';
-
+import './App.css';
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';

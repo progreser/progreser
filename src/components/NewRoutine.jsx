@@ -1,19 +1,14 @@
-import React, {useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
-import {
-  Form,
-  Input,
-  Checkbox,
-  Switch,
-  Select,
-  TimePicker,
-} from 'antd';
+import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+const { Option } = Select;
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
-
+  const bell = useRef();
+  const knock = useRef();
   const format = 'HH:mm';
 
   const options = [
@@ -44,10 +39,11 @@ const NewRoutine = ({ onRoutine }) => {
     console.log(`switch to ${checked}`);
   }
 
-
   const onFinish = values => {
     console.log('Received values of form: ', values);
   };
+
+  const bellChange = e => {};
 
   return (
     <div className="Modify">
@@ -67,7 +63,7 @@ const NewRoutine = ({ onRoutine }) => {
           <div className="toggle">
             <div className="active">활성화</div>
             <Form.Item name="alram">
-              <Switch defaultChecked onChange={onChange} />
+              <Switch onChange={onChange} />
             </Form.Item>
           </div>
         </div>
@@ -86,16 +82,24 @@ const NewRoutine = ({ onRoutine }) => {
           <span>
             <Form.Item name="frequency">
               <Select defaultValue="1번 울리기">
-                <Select value="1번 울리기">1번 울리기</Select>
-                <Select value="1분단위로 3번 울리기">1분단위로 3번 울리기</Select>
-                <Select value="5분 간격 3번 울리기">5분 간격 3번 울리기</Select>
+                <Option value="1번 울리기">1번 울리기</Option>
+                <Option value="1분단위로 3번 울리기">1분단위로 3번 울리기</Option>
+                <Option value="5분 간격 3번 울리기">5분 간격 3번 울리기</Option>
               </Select>
             </Form.Item>
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
         <div className="theme">
-          <div className="time">시간</div>
+          <Form.Item name="frequency-1">
+            <Select onChange={bellChange} defaultValue="알람 없음">
+              <Option value="알람 없음">알람 없음</Option>
+              <Option value="벨 소리">벨 소리</Option>
+              <Option value="노크 소리">노크 소리</Option>
+            </Select>
+          </Form.Item>
+          <audio controls ref={bell} src="./audio/bell.mp3" />
+          {/* <div className="time">시간</div> */}
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">

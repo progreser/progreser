@@ -1,18 +1,6 @@
 {
   "users": [
     {
-<<<<<<< HEAD
-      "id": 1,
-      "name": "박상언",
-      "pass": 11111,
-      "routines": []
-    },
-    {
-      "id": "favor@naver.com",
-      "name": "조윤아",
-      "pass": "1234",
-      "routines": []
-=======
       "id": "jungj123@naver.com",
       "name": "정지훈",
       "pass": "wjdwlgns",
@@ -37,7 +25,6 @@
       "pass": "123",
       "birth": "950812",
       "routine": []
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
     }
   ]
 }

@@ -36,11 +36,7 @@ function* loginSaga({ payload }) {
       id: loginUser.data.id,
       name: loginUser.data.name,
     };
-<<<<<<< HEAD
-    localStorage.setItem('token', JSON.stringify(loginUser.data.name));
-=======
     localStorage.setItem('token', JSON.stringify(user));
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
     yield put(push('/'));
   } catch (error) {
     yield put(loginfail(error));

@@ -1,10 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
 import './NewRoutine.scss';
-<<<<<<< HEAD
-import { useRef, useCallback } from 'react';
-import 'antd/dist/antd.css';
-import { Form, Switch, TimePicker } from 'antd';
-=======
 import 'antd/dist/antd.css';
 import {
   Form,
@@ -19,7 +14,6 @@ import {
   DatePicker,
   TimePicker,
 } from 'antd';
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
 import moment from 'moment';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 
@@ -49,13 +43,8 @@ const NewRoutine = ({ onRoutine }) => {
       for (let [key, value] of formdata.entries()) {
         routine[key] = value;
       }
-<<<<<<< HEAD
-      onRoutine(routine);
-      console.log(onRoutine(routine));
-=======
       console.log(routine);
       onRoutine(routine);
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
     },
     [onRoutine],
   );
@@ -63,12 +52,6 @@ const NewRoutine = ({ onRoutine }) => {
   function onChange(checked) {
     console.log(`switch to ${checked}`);
   }
-<<<<<<< HEAD
-  const format = 'HH:mm';
-
-  const onFinish = values => {
-    console.log(values);
-=======
 
   const click = e => {
     console.log(e.item.props.value);
@@ -78,7 +61,6 @@ const NewRoutine = ({ onRoutine }) => {
 
   const onFinish = values => {
     console.log('Received values of form: ', values);
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
   };
 
   return (
@@ -87,20 +69,6 @@ const NewRoutine = ({ onRoutine }) => {
         + New <br /> Routine
       </h1>
       <Form onFinish={onFinish} ref={form}>
-<<<<<<< HEAD
-        <Form.Item>
-          <input type="text" placeholder="루틴 이름 입력" name="routine" />
-        </Form.Item>
-        <ul>
-          <li>일</li>
-          <li>월</li>
-          <li>화</li>
-          <li>수</li>
-          <li>목</li>
-          <li>금</li>
-          <li>토</li>
-        </ul>
-=======
         <Form.Item name="routine">
           <Input placeholder="새 루틴을 추가해주세요" />
         </Form.Item>
@@ -108,18 +76,13 @@ const NewRoutine = ({ onRoutine }) => {
           <Checkbox.Group options={options} onChange={onChange} />
         </Form.Item>
 
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
         <h2>시작 알림</h2>
         <div className="theme">
           <div className="toggle">
             <div className="active">활성화</div>
-<<<<<<< HEAD
-            <Switch defaultChecked onChange={onChange} />
-=======
             <Form.Item name="alram">
               <Switch defaultChecked onChange={onChange} />
             </Form.Item>
->>>>>>> 6d367f135a772dd5e717ee9d056d7dbbf6870305
           </div>
         </div>
         <div className="theme">

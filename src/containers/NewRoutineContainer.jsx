@@ -1,7 +1,7 @@
 import React from 'react';
 
-const newroutineContainer = () => {
+const NewRoutineContainer = () => {
   return <div></div>;
 };
 
-export default newroutineContainer;
+export default NewRoutineContainer;

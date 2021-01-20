@@ -7,12 +7,14 @@ export default function Signup({ onSign }) {
   const pass = useRef();
   const name = useRef();
 
+  const form = useRef();
+  console.log(form.current);
+
   const failid = useRef();
 
   const Submit = useCallback(
     e => {
       e.preventDefault();
-      console.log();
       onSign(id.current.value, name.current.value, pass.current.value);
     },
     [onSign],
@@ -22,7 +24,7 @@ export default function Signup({ onSign }) {
     <div className="Signup">
       <h1>만나서 반가워요!</h1>
       <p>알찬 하루를 보낼 준비가 됐나요?</p>
-      <form onSubmit={Submit}>
+      <form onSubmit={Submit} ref={form}>
         <div>
           <label htmlFor="user-id" ref={failid}>
             이메일

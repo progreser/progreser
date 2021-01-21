@@ -7,8 +7,14 @@
       "birth": "정지훈",
       "routines": [
         {
-          "routine": "바보",
-          "date": []
+          "routine": "fefe",
+          "day": [
+            "수",
+            "목"
+          ],
+          "startTime": "04:05",
+          "endTime": "06:06",
+          "frequency": "5분 간격 3번 울리기"
         }
       ]
     },

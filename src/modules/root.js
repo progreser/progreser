@@ -6,8 +6,6 @@ import signinfo, { signupSaga } from './userSign';
 import newRoutine, { watchNewRoutineSaga } from './newRoutine';
 import { reducer as formReducer } from 'redux-form';
 import getRoutine, { watchGetRoutineSaga } from './getRoutine';
-
-// 리듀서 합치기
 export const rootReducer = history =>
   combineReducers({
     userInfo,

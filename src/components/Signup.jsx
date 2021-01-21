@@ -1,12 +1,17 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import MyModal from '../ModalPortal/MyModal/MyModal';
+import userService from '../modules/services/AuthService';
 import './Signup.scss';
 
 export default function Signup({ onSign }) {
   const id = useRef();
   const pass = useRef();
+  const repass = useRef();
   const name = useRef();
   const failid = useRef();
   const formData = useRef();
+  const [checked, setChecked] = useState(false);
+  const [passState, setPass] = useState('');
   const Submit = useCallback(
     e => {
       e.preventDefault();
@@ -20,6 +25,27 @@ export default function Signup({ onSign }) {
     },
     [onSign],
   );
+  const click = async e => {
+    e.preventDefault();
+    console.log(id.current.value);
+    const userId = await userService.getUser(id.current.value);
+    console.log(userId);
+    if (userId.length) {
+      console.log('중복');
+      setChecked(true);
+    } else {
+      setChecked(false);
+    }
+    console.log(checked);
+  };
+  const passChange = () => {
+    if (pass.current.value === repass.current.value) {
+      setPass(false);
+    } else {
+      setPass(true);
+    }
+    console.log(passState);
+  };
 
   return (
     <div className="Signup">
@@ -31,6 +57,7 @@ export default function Signup({ onSign }) {
             이메일
           </label>
           <input type="email" required name="user-id" ref={id} />
+          <button onClick={click}>중복 확인</button>
         </div>
         <div>
           <label htmlFor="user-pass">비밀번호</label>
@@ -38,7 +65,8 @@ export default function Signup({ onSign }) {
         </div>
         <div>
           <label htmlFor="user-repass">비밀번호</label>
-          <input type="password" required name="user-repass" />
+          <input type="password" required name="user-repass" onChange={passChange} ref={repass} />
+          {passState && '비밀번호가 다릅니다.'}
         </div>
         <div>
           <label htmlFor="user-name">이름</label>

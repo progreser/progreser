@@ -18,6 +18,7 @@ import storage from 'redux-persist/lib/storage';
 import persistReducer from '../node_modules/redux-persist/es/persistReducer';
 import persistStore from '../node_modules/redux-persist/es/persistStore';
 import { PersistGate } from 'redux-persist/integration/react';
+import MyModal from './ModalPortal/MyModal/MyModal';
 
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -49,6 +50,7 @@ function App() {
             </Switch>
           </ConnectedRouter>
         </div>
+        {/* <MyModal /> */}
       </PersistGate>
     </Provider>
   );

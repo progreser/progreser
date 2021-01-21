@@ -7,8 +7,44 @@
       "birth": "정지훈",
       "routines": [
         {
-          "routine": "바보",
-          "date": []
+          "day": [
+            "화",
+            "수"
+          ],
+          "startTime": "11:05",
+          "endTime": "03:04"
+        },
+        {
+          "day": [
+            "화",
+            "수"
+          ],
+          "startTime": "11:05",
+          "endTime": "03:04"
+        },
+        {
+          "day": [
+            "화",
+            "수"
+          ],
+          "startTime": "11:05",
+          "endTime": "03:04"
+        },
+        {
+          "day": [
+            "화",
+            "수"
+          ],
+          "startTime": "11:05",
+          "endTime": "03:04"
+        },
+        {
+          "day": [
+            "화",
+            "수"
+          ],
+          "startTime": "11:05",
+          "endTime": "03:04"
         }
       ]
     },

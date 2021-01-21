@@ -6,6 +6,7 @@ import signinfo, { signupSaga } from './userSign';
 import newRoutine, { watchNewRoutineSaga } from './newRoutine';
 import { reducer as formReducer } from 'redux-form';
 import getRoutine, { watchGetRoutineSaga } from './getRoutine';
+import { LogoutRoutineSaga } from './logout';
 export const rootReducer = history =>
   combineReducers({
     userInfo,
@@ -17,5 +18,11 @@ export const rootReducer = history =>
   });
 
 export function* rootSaga() {
-  yield all([userSaga(), signupSaga(), watchNewRoutineSaga(), watchGetRoutineSaga()]);
+  yield all([
+    userSaga(),
+    signupSaga(),
+    watchNewRoutineSaga(),
+    watchGetRoutineSaga(),
+    LogoutRoutineSaga(),
+  ]);
 }

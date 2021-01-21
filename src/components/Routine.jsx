@@ -7,13 +7,11 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
+
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 
 const Lilist = ({ routines }) => {
-  // const [state, setState] = useState([
-  //   { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
-  //   { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
-  // ]);
   return routines.map(routine => {
     return (
       <li className="Routine-list" key={routine.id}>
@@ -29,18 +27,30 @@ const Lilist = ({ routines }) => {
   });
 };
 
-const Routine = ({ routines, getRoutine }) => {
+const Routine = ({ routines, getRoutine, onLogout, history }) => {
   useEffect(() => {
     getRoutine();
   }, []);
-  console.log(routines);
+  console.log(history);
+
+  const logout = () => {
+    onLogout();
+    localStorage.removeItem('token');
+  };
+
   return (
     <div className="Routine">
       <div className="header">
         <time>
           <Moment interval={1000} format="M.DD (dd) hh:mm A" />
         </time>
-        <h1>평온한 오후입니다.</h1>
+        <h1>
+          평온한 <Moment interval={1000} format="A" />
+          입니다.
+        </h1>
+        <div className="logoutbtn">
+          <button onClick={logout}>로그아웃</button>
+        </div>
       </div>
       <ul className="section">
         <Lilist routines={routines} />

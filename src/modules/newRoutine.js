@@ -34,7 +34,8 @@ function* newRoutineSaga({ payload }) {
     console.log(prevState);
     yield call(axios.patch, `/users/${id}`, { routines: [...prevState, payload] });
     yield put(newSuccess(payload));
-    yield put(push('/'));
+    console.log(prevState);
+    // yield put(push('/'));
   } catch (error) {
     console.log(error);
     yield put(newfail(error));

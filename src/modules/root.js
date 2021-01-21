@@ -17,6 +17,7 @@ export const rootReducer = history =>
     form: formReducer,
   });
 
+// 사가 합치기
 export function* rootSaga() {
   yield all([
     userSaga(),

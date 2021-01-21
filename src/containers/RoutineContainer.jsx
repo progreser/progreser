@@ -10,6 +10,7 @@ const RoutineContainer = () => {
   const dispatch = useDispatch();
   const routines = useSelector(state => state.getRoutine);
   const getRoutine = () => dispatch(getStart());
+  const getRoutine = () => dispatch(getStart());
   const onLogout = () => {
     dispatch(newRemove());
     dispatch(getRemove());

@@ -10,6 +10,7 @@
   }
   div {
     margin-bottom: 20px;
+    position: relative;
     label {
       display: block;
       padding-bottom: 5px;
@@ -22,6 +23,15 @@
       border-radius: 5px;
       padding-left: 14px;
       outline: none;
+    }
+    button:not([type='submit']) {
+      position: absolute;
+      right: 0;
+      height: 40px;
+      border: 0;
+      border-left: 1px solid #a8a8a8;
+      cursor: pointer;
+      background: none;
     }
     li {
       display: inline-block;

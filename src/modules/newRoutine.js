@@ -32,10 +32,11 @@ function* newRoutineSaga({ payload }) {
     yield put(newSuccess(payload));
     yield put(push('/'));
   } catch (error) {
+    console.log(error);
     yield put(newfail(error));
   }
 }
 
-export function* routineSaga() {
+export function* watchNewRoutineSaga() {
   yield takeEvery(NEWSTART, newRoutineSaga);
 }

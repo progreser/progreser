@@ -5,7 +5,17 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
-      "routines": []
+      "routines": [
+        {
+          "routine": "운동",
+          "day": [
+            "월"
+          ],
+          "alram": true,
+          "startTime": "03:00",
+          "endTime": "02:00"
+        }
+      ]
     },
     {
       "id": "jungjh1231@naver.com",

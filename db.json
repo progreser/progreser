@@ -5,7 +5,15 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
-      "routines": []
+      "routines": [
+        {
+          "routine": "fefe",
+          "day": ["수", "목"],
+          "startTime": "04:05",
+          "endTime": "06:06",
+          "frequency": "5분 간격 3번 울리기"
+        }
+      ]
     },
     {
       "id": "jungjh1231@naver.com",

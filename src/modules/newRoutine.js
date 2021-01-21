@@ -15,12 +15,9 @@ const newfail = createAction(NEWFAIL);
 
 const newRoutine = handleActions(
   {
-    [NEWSTART]: state => ({ ...state }),
-    [NEWSUCCESS]: (state, { payload }) => ({
-      ...state,
-      payload,
-    }),
-    [NEWFAIL]: state => ({ ...state }),
+    [NEWSTART]: state => state,
+    [NEWSUCCESS]: (state, { payload }) => [...state, payload],
+    [NEWFAIL]: state => state,
   },
   [],
 );
@@ -31,12 +28,12 @@ function* newRoutineSaga({ payload }) {
   try {
     const { id } = JSON.parse(localStorage.getItem('token'));
     const prevState = yield select(state => state.newRoutine);
-
-    yield call(axios.patch, `/users/${id}`, { routines: [prevState, ...payload] });
     console.log(prevState);
+    yield call(axios.patch, `/users/${id}`, { routines: [...prevState, payload] });
     yield put(newSuccess(payload));
     // yield put(push('/'));
   } catch (error) {
+    console.log(error);
     yield put(newfail(error));
   }
 }

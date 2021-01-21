@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import axios from '../../node_modules/axios/index';
 import { push } from 'connected-react-router';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, select } from 'redux-saga/effects';
 
 const NEWSTART = 'newRoutine/START';
 const NEWSUCCESS = 'newRoutine/SUCCESS';
@@ -18,11 +18,11 @@ const newRoutine = handleActions(
     [NEWSTART]: state => ({ ...state }),
     [NEWSUCCESS]: (state, { payload }) => ({
       ...state,
-      ...payload,
+      payload,
     }),
     [NEWFAIL]: state => ({ ...state }),
   },
-  {},
+  [],
 );
 
 export default newRoutine;
@@ -30,10 +30,12 @@ export default newRoutine;
 function* newRoutineSaga({ payload }) {
   try {
     const { id } = JSON.parse(localStorage.getItem('token'));
-    const res = yield call(axios.get, `/users/${id}`);
-    console.log(res);
+    const prevState = yield select(state => state.newRoutine);
+
+    yield call(axios.patch, `/users/${id}`, { routines: [prevState, ...payload] });
+    console.log(prevState);
     yield put(newSuccess(payload));
-    yield put(push('/'));
+    // yield put(push('/'));
   } catch (error) {
     yield put(newfail(error));
   }

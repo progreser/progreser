@@ -1,20 +1,7 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
-import {
-  Form,
-  Input,
-  Menu,
-  Dropdown,
-  Button,
-  Checkbox,
-  Switch,
-  Radio,
-  Select,
-  DatePicker,
-  TimePicker,
-} from 'antd';
-import moment from 'moment';
+import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import date from 'date-and-time';
 
@@ -63,12 +50,6 @@ const NewRoutine = ({ onRoutine }) => {
     console.log(`switch to ${checked}`);
   }
 
-  const click = e => {
-    console.log(e.item.props.value);
-    setState(e.item.props.value);
-    console.log(state);
-  };
-
   const onFinish = values => {
     let getValues = values;
 
@@ -80,6 +61,8 @@ const NewRoutine = ({ onRoutine }) => {
     };
     onRoutine(getValues);
   };
+
+  const bellChange = e => {};
 
   return (
     <div className="NewRoutine">
@@ -99,7 +82,7 @@ const NewRoutine = ({ onRoutine }) => {
           <div className="toggle">
             <div className="active">활성화</div>
             <Form.Item name="alram">
-              <Switch defaultChecked onChange={onChange} />
+              <Switch onChange={onChange} />
             </Form.Item>
           </div>
         </div>

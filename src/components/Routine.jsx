@@ -10,17 +10,16 @@ import 'moment/locale/ko';
 import moment from 'moment';
 
 const Lilist = ({ routines }) => {
-  //const [state, setState] = useState([
-  // { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
-  //{ id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
-  //]);
-  console.log(routines);
+  // const [state, setState] = useState([
+  //   { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
+  //   { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
+  // ]);
   return routines.map(routine => {
     return (
       <li className="Routine-list">
         {routine.routine}
         <time>
-          {routine.startTime} {routine.endTime && '~'} {routine.endTime} {routine.day}
+          {routine.startTime} ~ {routine.endTime} {routine.day}
         </time>
         <button>
           <FiMoreHorizontal />
@@ -35,14 +34,15 @@ const Routine = ({ routines, getRoutine }) => {
     getRoutine();
   }, []);
   console.log(routines);
-
   return (
     <div className="Routine">
       <div className="header">
         <time>
           <Moment interval={1000} format="M.DD (dd) hh:mm A" />
         </time>
-        <h1>평온한 오후입니다.</h1>
+        <h1>
+          평온한 <Moment interval={1000} format="A" /> 입니다.
+        </h1>
       </div>
       <ul className="section">
         <Lilist routines={routines} />

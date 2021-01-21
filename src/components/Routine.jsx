@@ -14,12 +14,38 @@ const Lilist = ({ routines }) => {
   //   { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
   //   { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
   // ]);
+
+  // console.log(routines);
+  const today = new Date();
+  const boldDay = today.getDay(); // 4
+
+  const allDays = [
+    { id: 0, day: '일' },
+    { id: 1, day: '월' },
+    { id: 2, day: '화' },
+    { id: 3, day: '수' },
+    { id: 4, day: '목' },
+    { id: 5, day: '금' },
+    { id: 6, day: '토' },
+  ];
+  const checkDay = allDays.filter(today => today.id === boldDay);
+
+  const StyleDay = ({ days }) => {
+    return days.map(day => {
+      return checkDay[0].day === day ? (
+        <span style={{ color: 'black' }}>{day}</span>
+      ) : (
+        <span>{day}</span>
+      );
+    });
+  };
+
   return routines.map(routine => {
     return (
       <li className="Routine-list">
         {routine.routine}
-        <time>
-          {routine.startTime} ~ {routine.endTime} {routine.day}
+        <time style={{ fontWeight: 'bold' }}>
+          {routine.startTime} ~ {routine.endTime} <StyleDay days={routine.day} />
         </time>
         <button>
           <FiMoreHorizontal />

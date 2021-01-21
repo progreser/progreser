@@ -28,10 +28,7 @@ function* newRoutineSaga({ payload }) {
   try {
     const { id } = JSON.parse(localStorage.getItem('token'));
     const prevState = yield select(state => state.newRoutine);
-<<<<<<< HEAD
-=======
     console.log(prevState);
->>>>>>> 7af145cdd64b432245e091bfc1ebd3813213c561
     yield call(axios.patch, `/users/${id}`, { routines: [...prevState, payload] });
     yield put(newSuccess(payload));
     console.log(prevState);
@@ -42,6 +39,6 @@ function* newRoutineSaga({ payload }) {
   }
 }
 
-export function* routineSaga() {
+export function* watchNewRoutineSaga() {
   yield takeEvery(NEWSTART, newRoutineSaga);
 }

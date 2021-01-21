@@ -1,8 +1,4 @@
 import { Route, Switch } from 'react-router-dom';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Routine from './components/Routine';
-import NewRoutine from './components/NewRoutine';
 import './App.css';
 import createSagaMiddleware from 'redux-saga';
 import { applyMiddleware, createStore } from 'redux';
@@ -19,6 +15,7 @@ import persistReducer from '../node_modules/redux-persist/es/persistReducer';
 import persistStore from '../node_modules/redux-persist/es/persistStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import MyModal from './ModalPortal/MyModal/MyModal';
+import RoutineContainer from './containers/RoutineContainer';
 
 const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -46,7 +43,7 @@ function App() {
               <Route path="/login" component={LoginContainer} />
               <Route path="/newroutine" component={NewRoutineContainer} />
               <Route path="/signup" component={SignContainer} />
-              <Route path="/" exact component={Routine} />
+              <Route path="/" exact component={RoutineContainer} />
             </Switch>
           </ConnectedRouter>
         </div>

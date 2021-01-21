@@ -29,7 +29,7 @@ export default function Signup({ onSign }) {
     e.preventDefault();
     console.log(id.current.value);
     const userId = await userService.getUser(id.current.value);
-    console.log(userId);
+
     if (userId.length) {
       console.log('중복');
       setChecked(true);

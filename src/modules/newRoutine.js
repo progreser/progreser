@@ -38,6 +38,6 @@ function* newRoutineSaga({ payload }) {
   }
 }
 
-export function* routineSaga() {
+export function* watchNewRoutineSaga() {
   yield takeEvery(NEWSTART, newRoutineSaga);
 }

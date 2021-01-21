@@ -8,20 +8,18 @@ import { FiMoreHorizontal } from 'react-icons/fi';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 import moment from 'moment';
-// const todos = [{id: 1, message: }];
 
-const Lilist = () => {
-  const [state, setState] = useState([
-    { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
-    { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
-  ]);
-  console.log(state);
-  return state.map(todo => {
+const Lilist = ({ routines }) => {
+  // const [state, setState] = useState([
+  //   { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
+  //   { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
+  // ]);
+  return routines.map(routine => {
     return (
       <li className="Routine-list">
-        {todo.message}
+        {routine.routine}
         <time>
-          {todo.firsttime} {todo.lasttime && '~'} {todo.lasttime}
+          {routine.startTime} ~ {routine.endTime} {routine.day}
         </time>
         <button>
           <FiMoreHorizontal />
@@ -31,9 +29,11 @@ const Lilist = () => {
   });
 };
 
-const Routine = () => {
-  console.log(moment().format());
-
+const Routine = ({ routines, getRoutine }) => {
+  useEffect(() => {
+    getRoutine();
+  }, []);
+  console.log(routines);
   return (
     <div className="Routine">
       <div className="header">
@@ -43,7 +43,7 @@ const Routine = () => {
         <h1>평온한 오후입니다.</h1>
       </div>
       <ul className="section">
-        <Lilist />
+        <Lilist routines={routines} />
       </ul>
       <div className="plus">
         <button>

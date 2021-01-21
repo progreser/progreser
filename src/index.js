@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
+import MyModal from './ModalPortal/MyModal/MyModal';
 const history = createBrowserHistory();
 // // import { createStore } from 'redux';
 // import { Provider } from 'react-redux';

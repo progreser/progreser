@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react';
 import './Login.scss';
 
-export default function Login({ onLogin }) {
+export default function Login({ onLogin, history }) {
   const id = useRef();
   const pass = useRef();
 
@@ -12,6 +12,9 @@ export default function Login({ onLogin }) {
     },
     [onLogin],
   );
+  const signupBtn = () => {
+    history.push('/signup');
+  };
 
   return (
     <div className="Login">
@@ -26,7 +29,7 @@ export default function Login({ onLogin }) {
         <input type="submit" value="로그인" className="submitBtn" />
       </form>
       <div className="itemBox">
-        <button>회원가입 하기</button>
+        <button onClick={signupBtn}>회원가입 하기</button>
         <button>비밀번호 찾기</button>
       </div>
     </div>

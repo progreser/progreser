@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import MyModal from '../ModalPortal/MyModal/MyModal';
 import userService from '../modules/services/AuthService';
 import './Signup.scss';
@@ -10,8 +10,13 @@ export default function Signup({ onSign }) {
   const name = useRef();
   const failid = useRef();
   const formData = useRef();
-  const [checked, setChecked] = useState(false);
-  const [passState, setPass] = useState('');
+
+  const [checked, setChecked] = useState({
+    check: false,
+    email: false,
+    pass: false,
+  });
+
   const Submit = useCallback(
     e => {
       e.preventDefault();
@@ -27,25 +32,38 @@ export default function Signup({ onSign }) {
   );
   const click = async e => {
     e.preventDefault();
-    console.log(id.current.value);
-    const userId = await userService.getUser(id.current.value);
 
+    const userId = await userService.getUser(id.current.value);
+    console.log(id.current.value);
+    console.log(checked);
     if (userId.length) {
       console.log('중복');
-      setChecked(true);
+      setChecked({ ...checked, check: true });
     } else {
-      setChecked(false);
+      setChecked({ ...checked, check: false });
     }
+    // console.log(checked);
+  };
+  const passChange = useCallback(() => {
     console.log(checked);
-  };
-  const passChange = () => {
     if (pass.current.value === repass.current.value) {
-      setPass(false);
+      setChecked({ ...checked, pass: false });
     } else {
-      setPass(true);
+      setChecked({ ...checked, pass: true });
     }
-    console.log(passState);
+  }, [checked]);
+  const isEmail = asValue => {
+    let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+    return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
   };
+  const emailChange = useCallback(() => {
+    if (isEmail(id.current.value)) {
+      setChecked({ ...checked, email: false });
+    } else {
+      setChecked({ ...checked, email: true });
+    }
+  }, [checked]);
 
   return (
     <div className="Signup">
@@ -54,9 +72,10 @@ export default function Signup({ onSign }) {
       <form onSubmit={Submit} ref={formData}>
         <div>
           <label htmlFor="user-id" ref={failid}>
-            이메일
+            이메일 <span>{checked.check && '아이디가 중복되었습니다.'}</span>
+            <span>{checked.email && '이메일 형식이 아닙니다.'}</span>
           </label>
-          <input type="email" required name="user-id" ref={id} />
+          <input type="email" onChange={emailChange} required name="user-id" ref={id} />
           <button onClick={click}>중복 확인</button>
         </div>
         <div>
@@ -66,7 +85,7 @@ export default function Signup({ onSign }) {
         <div>
           <label htmlFor="user-repass">비밀번호</label>
           <input type="password" required name="user-repass" onChange={passChange} ref={repass} />
-          {passState && '비밀번호가 다릅니다.'}
+          <span className="user-pass">{checked.pass && '비밀번호가 다릅니다.'}</span>
         </div>
         <div>
           <label htmlFor="user-name">이름</label>
@@ -87,7 +106,13 @@ export default function Signup({ onSign }) {
           <input type="checkbox" name="user-ok" />
           <span>마이루틴의 이용약관과 개인정 취급방식에 동의합니다.</span>
         </div>
-        <button type="submit">하루 관리 시작하기</button>
+        {checked.check && checked.pass && checked.email ? (
+          <button type="submit">하루 관리 시작하기</button>
+        ) : (
+          <button type="submit" disabled>
+            하루 관리 시작하기
+          </button>
+        )}
       </form>
     </div>
   );

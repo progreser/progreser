@@ -5,56 +5,106 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
-      "routines": [
-        {
-          "id": 1611209963551,
-          "routine": "aewfeaw",
-          "day": [
-            "월",
-            "토"
-          ],
-          "alram": true,
-          "startTime": "02:06",
-          "endTime": "06:07",
-          "frequency": false,
-          "alarmSound": false
-        },
-        {
-          "id": 1611210001457,
-          "routine": "wfawe",
-          "day": false,
-          "alram": false,
-          "startTime": "04:05",
-          "endTime": "06:13",
-          "frequency": false,
-          "alarmSound": "none"
-        }
-      ]
+      "routines": []
     },
     {
       "id": "jungjh1231@naver.com",
       "name": "123",
       "pass": "123",
       "birth": "123",
-      "routine": []
+      "routines": [
+        {
+          "id": 1611241834331,
+          "routine": "sdfsdf",
+          "day": [
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "04:14",
+          "endTime": "06:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
+        {
+          "id": 1611241835844,
+          "routine": "sdfsdf",
+          "day": [
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "04:14",
+          "endTime": "06:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
+        {
+          "id": 1611241868184,
+          "routine": "sdfsdf",
+          "day": [
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "04:14",
+          "endTime": "06:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
+        {
+          "id": 1611242182147,
+          "routine": "hyfghfh",
+          "day": [
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "03:00",
+          "endTime": "05:00",
+          "frequency": false,
+          "alarmSound": "none"
+        },
+        {
+          "id": 1611242202793,
+          "routine": "fdhfhdh",
+          "day": [
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "04:06",
+          "endTime": "06:07",
+          "frequency": false,
+          "alarmSound": "none"
+        },
+        {
+          "id": 1611242223116,
+          "routine": "dfgd",
+          "day": [],
+          "alram": true,
+          "startTime": "06:05",
+          "endTime": "12:07",
+          "frequency": false,
+          "alarmSound": "none"
+        },
+        {
+          "id": 1611242239509,
+          "routine": "sdfsff",
+          "day": [],
+          "alram": false,
+          "startTime": "06:07",
+          "endTime": "07:05",
+          "frequency": false,
+          "alarmSound": "none"
+        }
+      ]
     },
     {
       "id": "jungjh565@naver.com",
       "name": "정지훈",
-      "pass": "123",
+      "pass": "wjdwlgns1474",
       "birth": "950812",
-      "routine": []
-    },
-    {
-      "id": "1234@naver.com",
-      "name": "오오오 뭐야",
-      "pass": "12341234",
-      "routine": []
-    },
-    {
-      "id": "asd@asdasd",
-      "name": "asd",
-      "pass": "asda",
       "routine": []
     }
   ]

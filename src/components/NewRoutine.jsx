@@ -33,6 +33,7 @@ const NewRoutine = ({ onRoutine }) => {
     values => {
       for (const key in values) {
         if (key === 'alarmSound' && values[key] === undefined) values[key] = 'none';
+        if (key === 'day' && values[key] === undefined) values[key] = [];
         values[key] = values[key] === undefined ? false : values[key];
       }
       const id = new Date().getTime();

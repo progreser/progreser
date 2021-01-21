@@ -12,7 +12,6 @@ import moment from 'moment';
 import { useSelector } from 'react-redux';
 
 const Lilist = ({ routines }) => {
-
   const today = new Date();
   const boldDay = today.getDay(); // 4
 
@@ -62,7 +61,9 @@ const Routine = ({ routines, getRoutine, onLogout, history }) => {
     onLogout();
     localStorage.removeItem('token');
   };
-
+  const click = () => {
+    history.push('/newroutine');
+  };
   return (
     <div className="Routine">
       <div className="header">
@@ -81,7 +82,7 @@ const Routine = ({ routines, getRoutine, onLogout, history }) => {
         <Lilist routines={routines} />
       </ul>
       <div className="plus">
-        <button>
+        <button onClick={click}>
           <BsPlus />
         </button>
       </div>

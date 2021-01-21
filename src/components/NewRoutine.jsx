@@ -1,20 +1,7 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
-import {
-  Form,
-  Input,
-  Menu,
-  Dropdown,
-  Button,
-  Checkbox,
-  Switch,
-  Radio,
-  Select,
-  DatePicker,
-  TimePicker,
-} from 'antd';
-import moment from 'moment';
+import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import date from 'date-and-time';
 
@@ -22,7 +9,7 @@ const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
   const audio = useRef();
 
-  const [alram, setAlram] = useState('');
+  const [alarm, setAlarm] = useState('');
 
   let message = '1번 울리기';
   const [state, setState] = useState(message);
@@ -39,9 +26,9 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '토', value: '토' },
   ];
 
-  const onAlramChange = alram => {
-    setAlram(alram);
-    audio.current.src = `./audio/${alram}.mp3`;
+  const onAlarmChange = alarm => {
+    setAlarm(alarm);
+    audio.current.src = `./audio/${alarm}.mp3`;
     audio.current.play();
   };
 
@@ -63,12 +50,6 @@ const NewRoutine = ({ onRoutine }) => {
     console.log(`switch to ${checked}`);
   }
 
-  const click = e => {
-    console.log(e.item.props.value);
-    setState(e.item.props.value);
-    console.log(state);
-  };
-
   const onFinish = values => {
     let getValues = values;
 
@@ -80,6 +61,8 @@ const NewRoutine = ({ onRoutine }) => {
     };
     onRoutine(getValues);
   };
+
+  const bellChange = e => {};
 
   return (
     <div className="NewRoutine">
@@ -99,7 +82,7 @@ const NewRoutine = ({ onRoutine }) => {
           <div className="toggle">
             <div className="active">활성화</div>
             <Form.Item name="alram">
-              <Switch defaultChecked onChange={onChange} />
+              <Switch onChange={onChange} />
             </Form.Item>
           </div>
         </div>
@@ -126,9 +109,9 @@ const NewRoutine = ({ onRoutine }) => {
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
-        <div className="theme">
-          <Form.Item name="frequency">
-            <Select defaultValue="알람 없음" onChange={onAlramChange}>
+        <div className="alarm">
+          <Form.Item name="alarmSound">
+            <Select defaultValue="알람 없음" onChange={onAlarmChange}>
               <Select value="none">알람 없음</Select>
               <Select value="bell">벨 소리</Select>
               <Select value="knock">노크 소리</Select>

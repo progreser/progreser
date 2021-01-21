@@ -7,6 +7,7 @@
       "birth": "정지훈",
       "routines": [
         {
+<<<<<<< HEAD
           "day": [
             "화",
             "수"
@@ -45,6 +46,16 @@
           ],
           "startTime": "11:05",
           "endTime": "03:04"
+=======
+          "routine": "fefe",
+          "day": [
+            "수",
+            "목"
+          ],
+          "startTime": "04:05",
+          "endTime": "06:06",
+          "frequency": "5분 간격 3번 울리기"
+>>>>>>> 7af145cdd64b432245e091bfc1ebd3813213c561
         }
       ]
     },

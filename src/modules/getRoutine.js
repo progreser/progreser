@@ -6,18 +6,20 @@ import { call, put, takeEvery, select } from 'redux-saga/effects';
 const GETSTART = 'getRoutine/START';
 const GETSUCCESS = 'getRoutine/SUCCESS';
 const GETFAIL = 'getRoutine/FAIL';
+const GETREMOVE = 'getRoutine/REMOVE';
 
 export const getStart = createAction(GETSTART);
 const getSuccess = createAction(GETSUCCESS, routine => routine);
 const getfail = createAction(GETFAIL);
-
+export const getRemove = createAction(GETREMOVE);
 // 리듀서함수제작
 
 const getRoutine = handleActions(
   {
     [GETSTART]: state => state,
-    [GETSUCCESS]: (_, { payload }) => payload,
+    [GETSUCCESS]: (state, { payload }) => payload,
     [GETFAIL]: state => state,
+    [GETREMOVE]: state => (state = []),
   },
   [],
 );
@@ -30,6 +32,7 @@ function* getRoutineSaga() {
     const res = yield call(axios.get, `/users/${id}`);
     yield put(getSuccess(res.data.routines));
   } catch (error) {
+    console.log(error);
     yield put(getfail(error));
   }
 }

@@ -16,4 +16,3 @@ const NewRoutineContainer = () => {
 };
 
 export default NewRoutineContainer;
-// users?id=${token}

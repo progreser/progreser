@@ -8,6 +8,7 @@
   box-sizing: border-box;
   .header {
     font-weight: 900;
+    position: relative;
     time {
     font-size: 1.4rem;
     color: #adb5bd;
@@ -22,6 +23,23 @@
       margin-top: 8%;
     }
     color: rgb(128, 87, 87);
+
+    .logoutbtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      button {
+        border: 0;
+        border-bottom: 1px solid;
+        background: none;
+        transition: 1s;
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+        &:hover {
+          background-color: #adb5bd;
+        }
+      }
+    }
   }
   .section {
     padding: 0;

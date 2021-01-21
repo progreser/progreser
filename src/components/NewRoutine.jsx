@@ -11,9 +11,6 @@ const NewRoutine = ({ onRoutine }) => {
 
   const [alarm, setAlarm] = useState('');
 
-  let message = '1번 울리기';
-  const [state, setState] = useState(message);
-
   const format = 'HH:mm';
 
   const options = [
@@ -32,37 +29,26 @@ const NewRoutine = ({ onRoutine }) => {
     audio.current.play();
   };
 
-  const onSubmit = useCallback(
-    e => {
-      e.preventDefault();
-      const formdata = new FormData(form.current);
-      const routine = {};
-      for (let [key, value] of formdata.entries()) {
-        routine[key] = value;
+  const onFinish = useCallback(
+    values => {
+      for (const key in values) {
+        if (key === 'alarmSound' && values[key] === undefined) values[key] = 'none';
+        values[key] = values[key] === undefined ? false : values[key];
       }
-      console.log(routine);
-      onRoutine(routine);
+      const id = new Date().getTime();
+
+      let getValues = values;
+
+      getValues = {
+        id,
+        ...values,
+        startTime: date.format(getValues.startTime._d, 'hh:mm'),
+        endTime: date.format(getValues.endTime._d, 'hh:mm'),
+      };
+      onRoutine(getValues);
     },
     [onRoutine],
   );
-
-  function onChange(checked) {
-    console.log(`switch to ${checked}`);
-  }
-
-  const onFinish = values => {
-    let getValues = values;
-
-    // const now = `${getValues.startTime._d.getHours()}:${getValues.startTime._d.getMinutes()}`;
-    getValues = {
-      ...values,
-      startTime: date.format(getValues.startTime._d, 'hh:mm'),
-      endTime: date.format(getValues.endTime._d, 'hh:mm'),
-    };
-    onRoutine(getValues);
-  };
-
-  const bellChange = e => {};
 
   return (
     <div className="NewRoutine">
@@ -74,7 +60,7 @@ const NewRoutine = ({ onRoutine }) => {
           <Input placeholder="새 루틴을 추가해주세요" />
         </Form.Item>
         <Form.Item name="day">
-          <Checkbox.Group options={options} onChange={onChange} />
+          <Checkbox.Group options={options} />
         </Form.Item>
 
         <h2>시작 알림</h2>
@@ -82,7 +68,7 @@ const NewRoutine = ({ onRoutine }) => {
           <div className="toggle">
             <div className="active">활성화</div>
             <Form.Item name="alram">
-              <Switch onChange={onChange} />
+              <Switch />
             </Form.Item>
           </div>
         </div>

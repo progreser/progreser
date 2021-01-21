@@ -7,14 +7,27 @@
       "birth": "정지훈",
       "routines": [
         {
-          "routine": "fefe",
+          "id": 1611209963551,
+          "routine": "aewfeaw",
           "day": [
-            "수",
-            "목"
+            "월",
+            "토"
           ],
+          "alram": true,
+          "startTime": "02:06",
+          "endTime": "06:07",
+          "frequency": false,
+          "alarmSound": false
+        },
+        {
+          "id": 1611210001457,
+          "routine": "wfawe",
+          "day": false,
+          "alram": false,
           "startTime": "04:05",
-          "endTime": "06:06",
-          "frequency": "5분 간격 3번 울리기"
+          "endTime": "06:13",
+          "frequency": false,
+          "alarmSound": "none"
         }
       ]
     },

@@ -16,10 +16,14 @@ import {
 } from 'antd';
 import moment from 'moment';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import date from 'date-and-time';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
-  const menuBtn = useRef();
+  const audio = useRef();
+
+  const [alarm, setAlarm] = useState('');
+
   let message = '1번 울리기';
   const [state, setState] = useState(message);
 
@@ -34,6 +38,12 @@ const NewRoutine = ({ onRoutine }) => {
     { label: '금', value: '금' },
     { label: '토', value: '토' },
   ];
+
+  const onAlarmChange = alarm => {
+    setAlarm(alarm);
+    audio.current.src = `./audio/${alarm}.mp3`;
+    audio.current.play();
+  };
 
   const onSubmit = useCallback(
     e => {
@@ -60,7 +70,15 @@ const NewRoutine = ({ onRoutine }) => {
   };
 
   const onFinish = values => {
-    console.log('Received values of form: ', values);
+    let getValues = values;
+
+    // const now = `${getValues.startTime._d.getHours()}:${getValues.startTime._d.getMinutes()}`;
+    getValues = {
+      ...values,
+      startTime: date.format(getValues.startTime._d, 'hh:mm'),
+      endTime: date.format(getValues.endTime._d, 'hh:mm'),
+    };
+    onRoutine(getValues);
   };
 
   return (
@@ -108,8 +126,14 @@ const NewRoutine = ({ onRoutine }) => {
           </span>
         </div>
         <h2>타이머 종료 알림</h2>
-        <div className="theme">
-          <div className="time">시간</div>
+        <div className="alarm">
+          <Form.Item name="alarmSound">
+            <Select defaultValue="알람 없음" onChange={onAlarmChange}>
+              <Select value="none">알람 없음</Select>
+              <Select value="bell">벨 소리</Select>
+              <Select value="knock">노크 소리</Select>
+            </Select>
+          </Form.Item>
         </div>
         <div className="button-wrap">
           <button className="button" type="reset">
@@ -120,6 +144,9 @@ const NewRoutine = ({ onRoutine }) => {
           </button>
         </div>
       </Form>
+      <audio controls ref={audio} autoplay>
+        <source src="" type="audio/mp3" />
+      </audio>
     </div>
   );
 };

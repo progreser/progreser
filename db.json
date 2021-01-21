@@ -5,12 +5,7 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
-      "routines": [
-        {
-          "routine": "바보",
-          "date": []
-        }
-      ]
+      "routines": []
     },
     {
       "id": "jungjh1231@naver.com",
@@ -24,6 +19,18 @@
       "name": "정지훈",
       "pass": "123",
       "birth": "950812",
+      "routine": []
+    },
+    {
+      "id": "1234@naver.com",
+      "name": "오오오 뭐야",
+      "pass": "12341234",
+      "routine": []
+    },
+    {
+      "id": "asd@asdasd",
+      "name": "asd",
+      "pass": "asda",
       "routine": []
     }
   ]

@@ -3,6 +3,9 @@ import { push } from 'connected-react-router';
 import { createAction, handleActions } from 'redux-actions';
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+// const prefix = 'progeser/user';
+
+// Action 타입 만들기
 const LOGINSTART = 'login/START';
 const LOGINSUCCESS = 'login/SUCCESS';
 const LOGINFAIL = 'login/FAIL';
@@ -32,12 +35,10 @@ function* loginSaga({ payload }) {
       throw new Error('비밀번호가 달라요');
     }
     yield put(loginSuccess(payload));
-    const user = {
-      id: loginUser.data.id,
-      name: loginUser.data.name,
-    };
+    const user = { id: loginUser.data.id, name: loginUser.data.name };
     localStorage.setItem('token', JSON.stringify(user));
     yield put(push('/'));
+    console.log(localStorage.getItem('token'));
   } catch (error) {
     yield put(loginfail(error));
   }

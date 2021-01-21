@@ -6,10 +6,12 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 const SIGNUPSTART = 'sign/START';
 const SIGNUPSUCCESS = 'sign/SUCCESS';
 const SIGNUPFAIL = 'sign/FAIL';
+const SIGNUPREMOVE = 'sign/REMOVE';
 
 export const signupStart = createAction(SIGNUPSTART, user => user);
 const signupSuccess = createAction(SIGNUPSUCCESS, user => user);
 const signupFail = createAction(SIGNUPFAIL);
+export const signupRemove = createAction(SIGNUPREMOVE);
 
 const signinfo = handleActions(
   {
@@ -19,6 +21,7 @@ const signinfo = handleActions(
       ...payload,
     }),
     [SIGNUPFAIL]: (state, { payload }) => ({ ...state, error: payload }),
+    [SIGNUPREMOVE]: state => (state = {}),
   },
   {},
 );

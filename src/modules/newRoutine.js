@@ -31,13 +31,13 @@ function* newRoutineSaga({ payload }) {
     console.log(prevState);
     yield call(axios.patch, `/users/${id}`, { routines: [...prevState, payload] });
     yield put(newSuccess(payload));
-    // yield put(push('/'));
+    yield put(push('/'));
   } catch (error) {
     console.log(error);
     yield put(newfail(error));
   }
 }
 
-export function* routineSaga() {
+export function* watchNewRoutineSaga() {
   yield takeEvery(NEWSTART, newRoutineSaga);
 }

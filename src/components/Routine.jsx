@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 const Lilist = ({ routines }) => {
   return routines.map(routine => {
     return (
-      <li className="Routine-list">
+      <li className="Routine-list" key={routine.id}>
         {routine.routine}
         <time>
           {routine.startTime} ~ {routine.endTime} {routine.day}

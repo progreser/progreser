@@ -16,6 +16,7 @@ import {
 } from 'antd';
 import moment from 'moment';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import date from 'date-and-time';
 
 const NewRoutine = ({ onRoutine }) => {
   const form = useRef();
@@ -68,13 +69,20 @@ const NewRoutine = ({ onRoutine }) => {
     console.log(state);
   };
 
-  const onFinish = routine => {
-    console.log('Received values of form: ', routine);
-    onRoutine(routine);
+  const onFinish = values => {
+    let getValues = values;
+
+    // const now = `${getValues.startTime._d.getHours()}:${getValues.startTime._d.getMinutes()}`;
+    getValues = {
+      ...values,
+      startTime: date.format(getValues.startTime._d, 'hh:mm'),
+      endTime: date.format(getValues.endTime._d, 'hh:mm'),
+    };
+    onRoutine(getValues);
   };
 
   return (
-    <div className="Modify">
+    <div className="NewRoutine">
       <h1>
         + New <br /> Routine
       </h1>

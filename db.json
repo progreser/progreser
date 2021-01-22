@@ -5,7 +5,62 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
-      "routines": []
+      "routines": [
+        {
+          "id": 1611289824909,
+          "routine": "dsgsdgg",
+          "day": [
+            "금"
+          ],
+          "alram": true,
+          "startTime": "03:05",
+          "endTime": "04:07",
+          "frequency": false,
+          "alarmSound": "none"
+        },
+        {
+          "id": 1611289846447,
+          "routine": "dsgsdg",
+          "day": [
+            "화",
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "03:05",
+          "endTime": "05:06",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
+        {
+          "id": 1611289856461,
+          "routine": false,
+          "day": [
+            "월",
+            "목",
+            "금"
+          ],
+          "alram": true,
+          "startTime": "03:05",
+          "endTime": "04:06",
+          "frequency": false,
+          "alarmSound": "none"
+        },
+        {
+          "id": 1611289874735,
+          "routine": "sdgdsg",
+          "day": [
+            "월",
+            "목",
+            "금"
+          ],
+          "alram": true,
+          "startTime": "01:02",
+          "endTime": "05:00",
+          "frequency": false,
+          "alarmSound": "none"
+        }
+      ]
     }
   ]
 }

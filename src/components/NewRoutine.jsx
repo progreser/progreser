@@ -10,7 +10,7 @@ const NewRoutine = ({ onRoutine }) => {
   const audio = useRef();
 
   const [alarm, setAlarm] = useState('');
-  
+
   let message = '1번 울리기';
   //const [state, setState] = useState(message);
 

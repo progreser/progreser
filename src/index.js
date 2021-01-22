@@ -10,7 +10,6 @@ import { createBrowserHistory } from 'history';
 import MyModal from './ModalPortal/MyModal/MyModal';
 const history = createBrowserHistory();
 
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 reportWebVitals();

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BsPlus } from 'react-icons/bs';
 import './Routine.scss';
 import { MdAccessTime } from 'react-icons/md';
@@ -11,7 +11,7 @@ import 'moment/locale/ko';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 
-const Lilist = ({ routines }) => {
+const Lilist = ({ routines, removeRoutine, editRoutine }) => {
   const today = new Date();
   const boldDay = today.getDay(); // 4
 
@@ -36,20 +36,65 @@ const Lilist = ({ routines }) => {
       );
     });
   };
-  return routines.map(routine => {
-    console.log(routines);
+  const RoutineLi = ({ routine }) => {
+    const [menuActive, setMenuState] = useState(false);
+    const [formActive, setFormState] = useState(false);
+    const [text, setTextState] = useState(routine.routine);
+
+    const input = useRef();
+    const iconBtn = useRef();
+    const btns = useRef();
+
+    const showBtns = () => {
+      setMenuState(!menuActive);
+      setFormState(false);
+    };
+
+    const showform = () => {
+      setFormState(!formActive);
+    };
+
+    const onChange = e => {
+      setTextState(e.target.value);
+    };
+    const onSubmit = e => {
+      e.preventDefault();
+    };
+
     return (
       <li className="Routine-list" key={routine.id}>
-        {routine.routine}
+        <form className={formActive ? 'show' : ''} onSubmit={onSubmit}>
+          <input type="text" value={text} name="modifyText" ref={input} onChange={onChange} />
+          <button
+            onClick={() => {
+              editRoutine(routine.id, input.current.value);
+            }}
+          >
+            수정완료
+          </button>
+        </form>
+        <p className={!formActive ? 'show' : ''}>{routine.routine}</p>
         <time style={{ fontWeight: 'bold' }}>
           {routine.startTime} ~ {routine.endTime} <StyleDay days={routine.day} />
         </time>
-        <button>
+        <div className={`Routine-btn ${menuActive ? 'show' : ''}`} ref={btns}>
+          <button onClick={showform}>수정</button>
+          <button
+            onClick={() => {
+              removeRoutine(routine.id);
+            }}
+          >
+            삭제
+          </button>
+        </div>
+        <button ref={iconBtn} onClick={showBtns}>
           <FiMoreHorizontal />
         </button>
       </li>
     );
-  });
+  };
+
+  return routines.map(routine => <RoutineLi routine={routine} />);
 };
 let timeId = time => {
   setTimeout(() => {
@@ -79,7 +124,7 @@ const messages = [
 
 const randomItem = messages[Math.floor(Math.random() * messages.length)];
 
-const Routine = ({ routines, getRoutine, onLogout, history }) => {
+const Routine = ({ routines, getRoutine, onLogout, history, removeRoutine, editRoutine }) => {
   useEffect(() => {
     getRoutine();
   }, []);
@@ -106,7 +151,7 @@ const Routine = ({ routines, getRoutine, onLogout, history }) => {
         </div>
       </div>
       <ul className="section">
-        <Lilist routines={routines} />
+        <Lilist routines={routines} removeRoutine={removeRoutine} editRoutine={editRoutine} />
       </ul>
       <div className="plus">
         <button onClick={click}>

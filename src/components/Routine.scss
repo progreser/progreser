@@ -82,7 +82,7 @@
       border-radius: 10px;
       margin-bottom: 10px;
       background-color: #f9fafc;
-       form {
+      form {
         display: none;
         button {
           font-size: 12px;
@@ -125,6 +125,20 @@
         svg {
           font-size: 25px;
         }
+      }
+      .Routine-btn {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+      .Routine-btn li:first-child button {
+        border-right: 1px solid #999;
+      }
+      .Routine-btn button {
+        font-size: 12px;
+        position: static;
+        background-color: #f8f9fa;
       }
     }
   }

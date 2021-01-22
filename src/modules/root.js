@@ -6,9 +6,9 @@ import signinfo, { signupSaga } from './userSign';
 import newRoutine, { watchNewRoutineSaga } from './newRoutine';
 import { reducer as formReducer } from 'redux-form';
 import getRoutine, {
+  watchEditRoutineSaga,
   watchGetRoutineSaga,
   watchRemoveRoutineSaga,
-  watcheditRoutineSaga,
 } from './getRoutine';
 import { LogoutRoutineSaga } from './logout';
 
@@ -28,8 +28,10 @@ export function* rootSaga() {
     signupSaga(),
     watchNewRoutineSaga(),
     watchRemoveRoutineSaga(),
-    watcheditRoutineSaga(),
+    watchEditRoutineSaga(),
     watchGetRoutineSaga(),
+    watchRemoveRoutineSaga(),
+    watchEditRoutineSaga(),
     LogoutRoutineSaga(),
   ]);
 }

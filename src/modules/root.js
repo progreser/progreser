@@ -14,7 +14,6 @@ export const rootReducer = history =>
     newRoutine,
     getRoutine,
     router: connectRouter(history),
-    form: formReducer,
   });
 
 // 사가 합치기

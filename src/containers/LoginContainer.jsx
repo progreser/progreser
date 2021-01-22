@@ -7,7 +7,6 @@ const LoginContainer = props => {
   const dispatch = useDispatch();
   const history = props.history;
   const onLogin = (id, pass) => dispatch(loginStart(id, pass));
-
   return <Login history={history} onLogin={onLogin} />;
 };
 

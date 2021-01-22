@@ -14,7 +14,6 @@ export const newRemove = createAction(NEWREMOVE);
 const newfail = createAction(NEWFAIL);
 
 // 리듀서함수제작
-
 const newRoutine = handleActions(
   {
     [NEWSTART]: state => state,

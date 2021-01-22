@@ -7,13 +7,22 @@
       "birth": "정지훈",
       "routines": [
         {
-          "routine": "운동",
-          "day": [
-            "월"
-          ],
+          "routine": "독서하기",
+          "day": ["수", "목", "금", "토"],
           "alram": true,
-          "startTime": "03:00",
-          "endTime": "02:00"
+          "startTime": "07:06",
+          "endTime": "12:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
+        {
+          "routine": "운동하기",
+          "day": ["수", "목", "금", "토"],
+          "alram": true,
+          "startTime": "07:06",
+          "endTime": "12:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
         }
       ]
     },
@@ -22,7 +31,17 @@
       "name": "123",
       "pass": "123",
       "birth": "123",
-      "routine": []
+      "routine": [
+        {
+          "routine": "운동하기",
+          "day": ["수", "목", "금", "토"],
+          "alram": true,
+          "startTime": "07:06",
+          "endTime": "12:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        }
+      ]
     },
     {
       "id": "jungjh565@naver.com",

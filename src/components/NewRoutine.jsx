@@ -12,7 +12,7 @@ const NewRoutine = ({ onRoutine }) => {
   const [alarm, setAlarm] = useState('');
 
   let message = '1번 울리기';
-  const [state, setState] = useState(message);
+  //const [state, setState] = useState(message);
 
   const format = 'HH:mm';
 

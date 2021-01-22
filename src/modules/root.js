@@ -11,6 +11,7 @@ import routine, {
   watchRemoveRoutineSaga,
 } from './getRoutine';
 import { LogoutRoutineSaga } from './logout';
+
 export const rootReducer = history =>
   combineReducers({
     userInfo,
@@ -25,6 +26,8 @@ export function* rootSaga() {
     userSaga(),
     signupSaga(),
     watchNewRoutineSaga(),
+    watchRemoveRoutineSaga(),
+    watchEditRoutineSaga(),
     watchGetRoutineSaga(),
     watchRemoveRoutineSaga(),
     watchEditRoutineSaga(),

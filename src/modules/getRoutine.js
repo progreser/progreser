@@ -4,12 +4,13 @@ import { call, put, takeEvery, select } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 
 const GETNEW = 'routine/NEW';
-const GETSTART = 'routine/START';
-const GETSUCCESS = 'routine/SUCCESS';
-const GETFAIL = 'routine/FAIL';
-const GETREMOVE = 'routine/REMOVE';
-const GETEDIT = 'routine/EDIT';
-const GETADD = 'routine/ADD';
+const GETSTART = 'getRoutine/START';
+const GETSUCCESS = 'getRoutine/SUCCESS';
+const GETFAIL = 'getRoutine/FAIL';
+const GETREMOVE = 'getRoutine/REMOVE';
+const GETLOGOUT = 'getLogout/LOGOUT';
+const GETEDIT = 'getRoutine/EDIT';
+const GETADD = 'getRoutine/ADD';
 
 export const newStart = createAction(GETNEW, routine => routine);
 export const getStart = createAction(GETSTART);
@@ -20,6 +21,7 @@ export const getEdit = createAction(GETEDIT, (routineId, routineText) => ({
   routineId,
   routineText,
 }));
+export const getLogout = createAction(GETLOGOUT);
 
 // 리듀서함수제작
 const routine = handleActions(
@@ -30,6 +32,7 @@ const routine = handleActions(
     [GETEDIT]: state => state,
     [GETSUCCESS]: (state, { payload }) => payload,
     [GETFAIL]: state => state,
+    [GETLOGOUT]: state => (state = []),
   },
   [],
 );

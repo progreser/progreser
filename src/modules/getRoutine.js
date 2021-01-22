@@ -14,7 +14,6 @@ const getfail = createAction(GETFAIL);
 export const getRemove = createAction(GETREMOVE);
 export const getAdd = createAction(GETADD, routine => routine);
 // 리듀서함수제작
-
 const getRoutine = handleActions(
   {
     [GETSTART]: state => state,

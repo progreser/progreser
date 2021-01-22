@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import './NewRoutine.scss';
 import 'antd/dist/antd.css';
 import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
@@ -10,6 +10,9 @@ const NewRoutine = ({ onRoutine }) => {
   const audio = useRef();
 
   const [alarm, setAlarm] = useState('');
+  
+  let message = '1번 울리기';
+  //const [state, setState] = useState(message);
 
   const format = 'HH:mm';
 

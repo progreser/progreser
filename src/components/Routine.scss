@@ -8,21 +8,38 @@
   // min-height: 812px;
   // max-height: 812px;
   box-sizing: border-box;
+  background-color: #fff;
   .header {
     font-weight: 900;
     position: relative;
     time {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: #adb5bd;
       margin-left: 3%;
     }
     h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: #212529;
-      font-weight: 900;
-      margin-left: 10%;
-      margin-top: 8%;
+      padding-top: 5%;
+      max-height: 110px;
+      overflow: hidden;
+      animation: typingAni 1.2s steps(10, end);
+
+      p {
+        position: relative;
+        margin: 0;
+        font-size: 1.3rem;
+        color: #212529;
+        font-weight: 900;
+        width: 355px;
+        padding-left: 3px;
+      }
+    }
+    @keyframes typingAni {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
     }
     color: #868e96;
     .logoutbtn {
@@ -50,19 +67,23 @@
     padding: 0;
     min-height: 380px;
     margin-top: 30px;
-
     .Routine-list {
+      &:nth-child(even) {
+        background-color: #f3f5fc;
+        //border: 1px solid #f7c0f6;
+      }
       padding: 30px 20px;
       list-style: none;
       position: relative;
       color: #000;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 1.4rem;
       letter-spacing: 1px;
       border-radius: 10px;
       margin-bottom: 10px;
+      background-color: #f9fafc;
       background-color: #e9ecef;
-
+      
       time {
         letter-spacing: 0;
         display: block;

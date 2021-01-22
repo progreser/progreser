@@ -13,54 +13,24 @@
       "pass": "123",
       "birth": "123",
       "routines": [
-        {
-          "id": 1611226465692,
-          "routine": false,
-          "day": [
-            "수",
-            "목",
-            "금"
-          ],
-          "alram": false,
-          "startTime": "03:06",
-          "endTime": "02:07",
-          "frequency": "5분 간격 3번 울리기"}
-        ,
-        {
-          "id": 1611241834331,
-          "routine": "sdfsdf",
-          "day": [
-            "수",
-            "목"
-          ],
+          "routine": "독서하기",
+          "day": ["수", "목", "금", "토"],
           "alram": true,
-          "startTime": "04:14",
-          "endTime": "06:07",
+          "startTime": "07:06",
+          "endTime": "12:07",
           "frequency": "1분단위로 3번 울리기",
           "alarmSound": "bell"
         },
+        {
+          "routine": "운동하기",
+          "day": ["수", "목", "금", "토"],
+          "alram": true,
+          "startTime": "07:06",
+          "endTime": "12:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        }
       ]
     },
-    {
-      "id": "jungjh565@naver.com",
-      "name": "정지훈",
-      "pass": "wjdwlgns1474",
-      "birth": "950812",
-      "routine": []
-    },
-    {
-      "id": "jungjh5651@naver.com",
-      "name": "정지훈",
-      "pass": "wjdwlgns1474",
-      "birth": "950812",
-      "routine": []
-    },
-    {
-      "id": "jungjh123@naver.com",
-      "name": "정지훈",
-      "pass": "123",
-      "birth": "950812",
-      "routine": []
-    }
   ]
 }

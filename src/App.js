@@ -24,31 +24,31 @@ const persistConfig = {
   key: 'root',
   storage,
 };
-// const enhancedReducer = persistReducer(persistConfig, rootReducer(history));
+const enhancedReducer = persistReducer(persistConfig, rootReducer(history));
 const store = createStore(
-  rootReducer(history),
+  enhancedReducer,
   composeWithDevTools(applyMiddleware(routerMiddleware(history), sagaMiddleware)),
 );
 sagaMiddleware.run(rootSaga);
 
-// const persistor = persistStore(store);
+const persistor = persistStore(store);
 
 function App() {
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={null} persistor={persistor}> */}
-      <div className="App">
-        <ConnectedRouter history={history}>
-          <Switch>
-            <Route path="/login" component={LoginContainer} />
-            <Route path="/newroutine" component={NewRoutineContainer} />
-            <Route path="/signup" component={SignContainer} />
-            <Route path="/" exact component={RoutineContainer} />
-          </Switch>
-        </ConnectedRouter>
-      </div>
-      {/* <MyModal /> */}
-      {/* </PersistGate> */}
+      <PersistGate loading={null} persistor={persistor}>
+        <div className="App">
+          <ConnectedRouter history={history}>
+            <Switch>
+              <Route path="/login" component={LoginContainer} />
+              <Route path="/newroutine" component={NewRoutineContainer} />
+              <Route path="/signup" component={SignContainer} />
+              <Route path="/" exact component={RoutineContainer} />
+            </Switch>
+          </ConnectedRouter>
+        </div>
+        {/* <MyModal /> */}
+      </PersistGate>
     </Provider>
   );
 }

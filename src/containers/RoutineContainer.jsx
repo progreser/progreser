@@ -6,10 +6,11 @@ import { logoutStart } from '../modules/logout';
 import { newRemove } from '../modules/newRoutine';
 import { loginremove } from '../modules/user';
 import { signupRemove } from '../modules/userSign';
-const RoutineContainer = () => {
+const RoutineContainer = props => {
   const dispatch = useDispatch();
   const routines = useSelector(state => state.getRoutine);
   const getRoutine = () => dispatch(getStart());
+  const history = props.history;
   const onLogout = () => {
     dispatch(newRemove());
     dispatch(getRemove());
@@ -18,7 +19,9 @@ const RoutineContainer = () => {
     dispatch(logoutStart());
   };
 
-  return <Routine routines={routines} onLogout={onLogout} getRoutine={getRoutine} />;
+  return (
+    <Routine history={history} routines={routines} onLogout={onLogout} getRoutine={getRoutine} />
+  );
 };
 
 export default RoutineContainer;

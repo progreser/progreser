@@ -5,6 +5,13 @@
       "name": "정지훈",
       "pass": "wjdwlgns",
       "birth": "정지훈",
+      "routines": []
+    },
+    {
+      "id": "jungjh1231@naver.com",
+      "name": "123",
+      "pass": "123",
+      "birth": "123",
       "routines": [
         {
           "id": 1611226465692,
@@ -17,35 +24,42 @@
           "alram": false,
           "startTime": "03:06",
           "endTime": "02:07",
-          "frequency": "5분 간격 3번 울리기",
-          "alarmSound": "none"
-        }
+          "frequency": "5분 간격 3번 울리기"}
+        ,
+        {
+          "id": 1611241834331,
+          "routine": "sdfsdf",
+          "day": [
+            "수",
+            "목"
+          ],
+          "alram": true,
+          "startTime": "04:14",
+          "endTime": "06:07",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
       ]
-    },
-    {
-      "id": "jungjh1231@naver.com",
-      "name": "123",
-      "pass": "123",
-      "birth": "123",
-      "routine": []
     },
     {
       "id": "jungjh565@naver.com",
       "name": "정지훈",
-      "pass": "123",
+      "pass": "wjdwlgns1474",
       "birth": "950812",
       "routine": []
     },
     {
-      "id": "1234@naver.com",
-      "name": "오오오 뭐야",
-      "pass": "12341234",
+      "id": "jungjh5651@naver.com",
+      "name": "정지훈",
+      "pass": "wjdwlgns1474",
+      "birth": "950812",
       "routine": []
     },
     {
-      "id": "asd@asdasd",
-      "name": "asd",
-      "pass": "asda",
+      "id": "jungjh123@naver.com",
+      "name": "정지훈",
+      "pass": "123",
+      "birth": "950812",
       "routine": []
     }
   ]

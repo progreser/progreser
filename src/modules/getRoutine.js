@@ -17,7 +17,7 @@ export const getRemove = createAction(GETREMOVE);
 const getRoutine = handleActions(
   {
     [GETSTART]: state => state,
-    [GETSUCCESS]: (state, { payload }) => payload,
+    [GETSUCCESS]: (state, { payload }) => [...state, ...payload],
     [GETFAIL]: state => state,
     [GETREMOVE]: state => (state = []),
   },

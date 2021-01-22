@@ -1,14 +1,17 @@
 import { createAction, handleActions } from 'redux-actions';
 import axios from '../../node_modules/axios/index';
 import { call, put, takeEvery, select } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
 
-const GETSTART = 'getRoutine/START';
-const GETSUCCESS = 'getRoutine/SUCCESS';
-const GETFAIL = 'getRoutine/FAIL';
-const GETREMOVE = 'getRoutine/REMOVE';
-const GETEDIT = 'getRoutine/EDIT';
-const GETADD = 'getRoutine/ADD';
+const GETNEW = 'routine/NEW';
+const GETSTART = 'routine/START';
+const GETSUCCESS = 'routine/SUCCESS';
+const GETFAIL = 'routine/FAIL';
+const GETREMOVE = 'routine/REMOVE';
+const GETEDIT = 'routine/EDIT';
+const GETADD = 'routine/ADD';
 
+export const newStart = createAction(GETNEW, routine => routine);
 export const getStart = createAction(GETSTART);
 const getSuccess = createAction(GETSUCCESS, routine => routine);
 const getfail = createAction(GETFAIL);
@@ -17,22 +20,21 @@ export const getEdit = createAction(GETEDIT, (routineId, routineText) => ({
   routineId,
   routineText,
 }));
-export const getAdd = createAction(GETADD, routine => routine);
 
 // 리듀서함수제작
-const getRoutine = handleActions(
+const routine = handleActions(
   {
     [GETSTART]: state => state,
-    [GETADD]: (state, { payload }) => [...state, ...payload],
-    [GETSUCCESS]: (state, { payload }) => payload,
-    [GETFAIL]: state => state,
+    [GETNEW]: state => state,
     [GETREMOVE]: state => state,
     [GETEDIT]: state => state,
+    [GETSUCCESS]: (state, { payload }) => payload,
+    [GETFAIL]: state => state,
   },
   [],
 );
 
-export default getRoutine;
+export default routine;
 
 function* getRoutineSaga() {
   try {
@@ -48,7 +50,7 @@ function* getRoutineSaga() {
 function* editRoutineSaga({ payload: { routineId, routineText } }) {
   try {
     const { id } = JSON.parse(localStorage.getItem('token'));
-    const prevState = yield select(state => state.getRoutine);
+    const prevState = yield select(state => state.routine);
     const newState = prevState.map(routine => {
       return routineId === routine.id ? { ...routine, routine: routineText } : routine;
     });
@@ -63,10 +65,24 @@ function* editRoutineSaga({ payload: { routineId, routineText } }) {
 function* removeRoutineSaga({ payload: routineId }) {
   try {
     const { id } = JSON.parse(localStorage.getItem('token'));
-    const prevState = yield select(state => state.getRoutine);
+    const prevState = yield select(state => state.routine);
     const newState = prevState.filter(routine => routine.id !== routineId);
     yield call(axios.patch, `/users/${id}`, { routines: newState });
     yield put(getSuccess(newState));
+  } catch (error) {
+    console.log(error);
+    yield put(getfail(error));
+  }
+}
+
+function* newRoutineSaga({ payload }) {
+  try {
+    const { id } = JSON.parse(localStorage.getItem('token'));
+    const prevState = yield select(state => state.routine);
+    const newState = [...prevState, payload];
+    yield call(axios.patch, `/users/${id}`, { routines: newState });
+    yield put(getSuccess(newState));
+    yield put(push('/'));
   } catch (error) {
     console.log(error);
     yield put(getfail(error));
@@ -81,4 +97,7 @@ export function* watchRemoveRoutineSaga() {
 }
 export function* watchEditRoutineSaga() {
   yield takeEvery(GETEDIT, editRoutineSaga);
+}
+export function* watchNewRoutineSaga() {
+  yield takeEvery(GETNEW, newRoutineSaga);
 }

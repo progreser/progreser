@@ -7,18 +7,57 @@
       "birth": "정지훈",
       "routines": [
         {
-          "id": 1611284445703,
+          "id": 1611291696557,
+          "routine": "jyyjjjj",
           "day": [
             "화",
+            "목",
+            "금"
+          ],
+          "alram": true,
+          "startTime": "02:04",
+          "endTime": "03:04",
+          "frequency": false,
+          "alarmSound": "bell"
+        },
+        {
+          "id": 1611294945559,
+          "routine": "aefeawrrr",
+          "day": [
             "수",
-            "목"
+            "토"
           ],
           "alram": false,
-          "startTime": "03:05",
-          "endTime": "04:06",
-          "frequency": false,
-          "alarmSound": "none",
-          "routine": "efwwea"
+          "startTime": "02:03",
+          "endTime": "11:06",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "bell"
+        },
+        {
+          "id": 1611294975346,
+          "routine": "effefe",
+          "day": [
+            "월",
+            "수"
+          ],
+          "alram": true,
+          "startTime": "01:02",
+          "endTime": "04:05",
+          "frequency": "5분 간격 3번 울리기",
+          "alarmSound": "none"
+        },
+        {
+          "id": 1611295161327,
+          "routine": "fff",
+          "day": [
+            "화",
+            "토"
+          ],
+          "alram": true,
+          "startTime": "12:02",
+          "endTime": "05:06",
+          "frequency": "1분단위로 3번 울리기",
+          "alarmSound": "none"
         }
       ]
     }

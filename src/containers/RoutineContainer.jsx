@@ -8,7 +8,7 @@ import { loginremove } from '../modules/user';
 import { signupRemove } from '../modules/userSign';
 const RoutineContainer = props => {
   const dispatch = useDispatch();
-  const routines = useSelector(state => state.getRoutine);
+  const routines = useSelector(state => state.routine);
 
   const getRoutine = () => dispatch(getStart());
   const removeRoutine = id => dispatch(getRemove(id));

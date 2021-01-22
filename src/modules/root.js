@@ -3,11 +3,11 @@ import { combineReducers } from 'redux';
 import userInfo, { userSaga } from './user';
 import { connectRouter } from 'connected-react-router';
 import signinfo, { signupSaga } from './userSign';
-import newRoutine, { watchNewRoutineSaga } from './newRoutine';
 import { reducer as formReducer } from 'redux-form';
-import getRoutine, {
-  watchEditRoutineSaga,
+import routine, {
   watchGetRoutineSaga,
+  watchEditRoutineSaga,
+  watchNewRoutineSaga,
   watchRemoveRoutineSaga,
 } from './getRoutine';
 import { LogoutRoutineSaga } from './logout';
@@ -15,8 +15,7 @@ export const rootReducer = history =>
   combineReducers({
     userInfo,
     signinfo,
-    newRoutine,
-    getRoutine,
+    routine,
     router: connectRouter(history),
   });
 

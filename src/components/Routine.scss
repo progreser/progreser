@@ -82,8 +82,31 @@
       border-radius: 10px;
       margin-bottom: 10px;
       background-color: #f9fafc;
-      background-color: #e9ecef;
-      
+      form {
+        display: none;
+        button {
+          font-size: 12px;
+          transform: translate(-90%, 11px);
+          background-color: #c5c5c5;
+          border-radius: 10px;
+        }
+      }
+      p {
+        display: none;
+      }
+      p.show {
+        display: block;
+      }
+      form.show {
+        display: block;
+      }
+      .Routine-btn {
+        transition: all 0.5s;
+        opacity: 0;
+      }
+      .Routine-btn.show {
+        opacity: 1;
+      }
       time {
         letter-spacing: 0;
         display: block;
@@ -102,6 +125,20 @@
         svg {
           font-size: 25px;
         }
+      }
+      .Routine-btn {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+      .Routine-btn li:first-child button {
+        border-right: 1px solid #999;
+      }
+      .Routine-btn button {
+        font-size: 12px;
+        position: static;
+        background-color: #f8f9fa;
       }
     }
   }

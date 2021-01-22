@@ -6,6 +6,7 @@ const GETSTART = 'getRoutine/START';
 const GETSUCCESS = 'getRoutine/SUCCESS';
 const GETFAIL = 'getRoutine/FAIL';
 const GETREMOVE = 'getRoutine/REMOVE';
+const GETLOGOUT = 'getLogout/LOGOUT';
 const GETEDIT = 'getRoutine/EDIT';
 const GETADD = 'getRoutine/ADD';
 
@@ -18,6 +19,7 @@ export const getEdit = createAction(GETEDIT, (routineId, routineText) => ({
   routineText,
 }));
 export const getAdd = createAction(GETADD, routine => routine);
+export const getLogout = createAction(GETLOGOUT);
 
 // 리듀서함수제작
 const getRoutine = handleActions(
@@ -28,6 +30,7 @@ const getRoutine = handleActions(
     [GETFAIL]: state => state,
     [GETREMOVE]: state => state,
     [GETEDIT]: state => state,
+    [GETLOGOUT]: state => (state = []),
   },
   [],
 );

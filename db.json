@@ -7,18 +7,18 @@
       "birth": "정지훈",
       "routines": [
         {
-          "id": 1611284445703,
+          "id": 1611291846488,
+          "routine": "dsgdsggg",
           "day": [
             "화",
-            "수",
-            "목"
+            "목",
+            "금"
           ],
-          "alram": false,
-          "startTime": "03:05",
-          "endTime": "04:06",
+          "alram": true,
+          "startTime": "03:04",
+          "endTime": "05:06",
           "frequency": false,
-          "alarmSound": "none",
-          "routine": "efwwea"
+          "alarmSound": "none"
         }
       ]
     }

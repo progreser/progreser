@@ -23,6 +23,7 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['userInfo', 'signinfo', 'newRoutine', 'getRoutine'],
 };
 const enhancedReducer = persistReducer(persistConfig, rootReducer(history));
 const store = createStore(

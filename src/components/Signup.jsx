@@ -14,6 +14,7 @@ export default function Signup({ onSign }) {
 
   const [checked, setChecked] = useState({
     check: false,
+    ok: false,
     email: false,
     pass: false,
   });
@@ -39,37 +40,39 @@ export default function Signup({ onSign }) {
     console.log(id.current.value);
     console.log(checked);
     if (userId.length) {
-      console.log('중복');
       setChecked({ ...checked, check: true });
+      id.current.style = 'border-color: red;';
     } else {
-      setChecked({ ...checked, check: false });
+      setChecked({ ...checked, ok: true });
+      id.current.style = 'border-color: blue;';
     }
     // console.log(checked);
   };
   const passChange = useCallback(() => {
-    console.log(checked);
     if (pass.current.value === repass.current.value) {
       setChecked({ ...checked, pass: false });
+      repass.current.style = 'border-color: blue;';
+      pass.current.style = 'border-color: blue;';
     } else {
       setChecked({ ...checked, pass: true });
+      pass.current.style = 'border-color: red;';
+      repass.current.style = 'border-color: red;';
     }
   }, [checked]);
-  const isEmail = asValue => {
+  const isEmail = useCallback(asValue => {
     let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
     return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
-  };
+  }, []);
   const emailChange = useCallback(() => {
     if (isEmail(id.current.value)) {
       setChecked({ ...checked, email: false });
     } else {
       setChecked({ ...checked, email: true });
     }
-  }, [checked]);
+  }, [checked, isEmail]);
 
   const checkInput = () => {
-    console.log(typeof birthday.current.maxLength);
-    console.log(typeof +birthday.current.value);
     if (
       id.current.value !== '' &&
       pass.current.value !== '' &&
@@ -90,6 +93,13 @@ export default function Signup({ onSign }) {
         <div>
           <label htmlFor="user-id" ref={failid}>
             이메일 * <span>{checked.check && '아이디가 중복되었습니다.'}</span>
+            <span
+              style={{
+                color: 'blue',
+              }}
+            >
+              {checked.ok && '이 아이디를 사용할 수 있습니다.'}
+            </span>
             <span>{checked.email && '이메일 형식이 아닙니다.'}</span>
           </label>
           <input type="email" onChange={emailChange} required name="user-id" ref={id} />
@@ -131,9 +141,22 @@ export default function Signup({ onSign }) {
           <span>마이루틴의 이용약관과 개인정 취급방식에 동의합니다.</span>
         </div>
         {btn ? (
-          <button type="submit">하루 관리 시작하기</button>
+          <button
+            type="submit"
+            style={{
+              cursor: 'pointer',
+            }}
+          >
+            하루 관리 시작하기
+          </button>
         ) : (
-          <button type="submit" disabled>
+          <button
+            type="submit"
+            disabled
+            style={{
+              cursor: 'not-allowed',
+            }}
+          >
             하루 관리 시작하기
           </button>
         )}

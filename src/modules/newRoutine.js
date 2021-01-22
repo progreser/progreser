@@ -6,9 +6,11 @@ import { call, put, takeEvery, select } from 'redux-saga/effects';
 const NEWSTART = 'newRoutine/START';
 const NEWSUCCESS = 'newRoutine/SUCCESS';
 const NEWFAIL = 'newRoutine/FAIL';
+const NEWREMOVE = 'newRoutine/REMOVE';
 
 export const newStart = createAction(NEWSTART, routine => routine);
 const newSuccess = createAction(NEWSUCCESS, routine => routine);
+export const newRemove = createAction(NEWREMOVE);
 const newfail = createAction(NEWFAIL);
 
 // 리듀서함수제작
@@ -17,6 +19,7 @@ const newRoutine = handleActions(
     [NEWSTART]: state => state,
     [NEWSUCCESS]: (state, { payload }) => [...state, payload],
     [NEWFAIL]: state => state,
+    [NEWREMOVE]: state => (state = []),
   },
   [],
 );
@@ -30,6 +33,7 @@ function* newRoutineSaga({ payload }) {
     console.log(prevState);
     yield call(axios.patch, `/users/${id}`, { routines: [...prevState, payload] });
     yield put(newSuccess(payload));
+    console.log(prevState);
     yield put(push('/'));
   } catch (error) {
     console.log(error);

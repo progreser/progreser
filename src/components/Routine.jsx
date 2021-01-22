@@ -8,17 +8,41 @@ import { FiMoreHorizontal } from 'react-icons/fi';
 import Moment from 'react-moment';
 import 'moment/locale/ko';
 
+import moment from 'moment';
+import { useSelector } from 'react-redux';
+
 const Lilist = ({ routines }) => {
-  // const [state, setState] = useState([
-  //   { id: 1, message: '아침 루트', firsttime: '9:15am', lasttime: '9:16am' },
-  //   { id: 2, message: '밥먹기', firsttime: '0:00am', lasttime: '' },
-  // ]);
+  const today = new Date();
+  const boldDay = today.getDay(); // 4
+
+  const allDays = [
+    { id: 0, day: '일' },
+    { id: 1, day: '월' },
+    { id: 2, day: '화' },
+    { id: 3, day: '수' },
+    { id: 4, day: '목' },
+    { id: 5, day: '금' },
+    { id: 6, day: '토' },
+  ];
+  const checkDay = allDays.filter(today => today.id === boldDay);
+
+  const StyleDay = ({ days }) => {
+    console.log(days);
+    return days.map(day => {
+      return checkDay[0].day === day ? (
+        <span style={{ color: 'black' }}>{day}</span>
+      ) : (
+        <span>{day}</span>
+      );
+    });
+  };
   return routines.map(routine => {
+    console.log(routines);
     return (
-      <li className="Routine-list">
+      <li className="Routine-list" key={routine.id}>
         {routine.routine}
-        <time>
-          {routine.startTime} ~ {routine.endTime} {routine.day}
+        <time style={{ fontWeight: 'bold' }}>
+          {routine.startTime} ~ {routine.endTime} <StyleDay days={routine.day} />
         </time>
         <button>
           <FiMoreHorizontal />
@@ -26,6 +50,11 @@ const Lilist = ({ routines }) => {
       </li>
     );
   });
+};
+let timeId = time => {
+  setTimeout(() => {
+    console.log('알람입니다');
+  }, time);
 };
 
 const today = new Date();
@@ -49,13 +78,20 @@ const messages = [
 ];
 
 const randomItem = messages[Math.floor(Math.random() * messages.length)];
-console.log(randomItem);
 
-const Routine = ({ routines, getRoutine }) => {
+const Routine = ({ routines, getRoutine, onLogout, history }) => {
   useEffect(() => {
     getRoutine();
   }, []);
-  console.log(routines);
+  console.log(history);
+
+  const logout = () => {
+    onLogout();
+    localStorage.removeItem('token');
+  };
+  const click = () => {
+    history.push('/newroutine');
+  };
   return (
     <div className="Routine">
       <div className="header">
@@ -65,12 +101,15 @@ const Routine = ({ routines, getRoutine }) => {
         <h1>
           <p>{randomItem}</p>
         </h1>
+        <div className="logoutbtn">
+          <button onClick={logout}>로그아웃</button>
+        </div>
       </div>
       <ul className="section">
         <Lilist routines={routines} />
       </ul>
       <div className="plus">
-        <button>
+        <button onClick={click}>
           <BsPlus />
         </button>
       </div>

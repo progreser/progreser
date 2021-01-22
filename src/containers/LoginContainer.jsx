@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import Login from '../components/Login';
 import { loginStart } from '../modules/user';
 
-const LoginContainer = () => {
+const LoginContainer = props => {
   const dispatch = useDispatch();
+  const history = props.history;
   const onLogin = (id, pass) => dispatch(loginStart(id, pass));
-  return <Login onLogin={onLogin} />;
+  return <Login history={history} onLogin={onLogin} />;
 };
 
 export default LoginContainer;

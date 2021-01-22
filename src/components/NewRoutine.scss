@@ -29,7 +29,9 @@
     display: flex;
     justify-content: space-between;
     padding: 30px 0;
+    box-sizing: border-box;
   }
+
   .ant-checkbox-group span {
     background-color: #343a40;
     padding: 10px 15px;
@@ -49,6 +51,7 @@
     background-color: #d6d6d6;
     color: #000;
   }
+
   ul {
     display: flex;
     justify-content: space-between;

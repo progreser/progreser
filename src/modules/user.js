@@ -9,9 +9,12 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 const LOGINSTART = 'login/START';
 const LOGINSUCCESS = 'login/SUCCESS';
 const LOGINFAIL = 'login/FAIL';
+const LOGINREMOVE = 'login/remove';
+
 export const loginStart = createAction(LOGINSTART, (id, pass) => ({ id, pass }));
 const loginSuccess = createAction(LOGINSUCCESS, (id, pass) => ({ id, pass }));
 const loginfail = createAction(LOGINFAIL);
+export const loginremove = createAction(LOGINREMOVE);
 
 // 리듀서함수제작
 const userinfo = handleActions(
@@ -22,6 +25,7 @@ const userinfo = handleActions(
       ...payload,
     }),
     [LOGINFAIL]: state => ({ ...state }),
+    [LOGINREMOVE]: state => (state = {}),
   },
   {},
 );

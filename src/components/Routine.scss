@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 .Routine {
+  background-color: #f8f9fa;
   font-family: 'Roboto', sans-serif;
   padding: 30px 10px;
   overflow-y: hidden;
+  // background-color: #f8f9fa;
   // min-height: 812px;
   // max-height: 812px;
   box-sizing: border-box;
   background-color: #fff;
   .header {
     font-weight: 900;
+    position: relative;
     time {
       font-size: 1.5rem;
       color: #adb5bd;
@@ -38,6 +41,27 @@
         width: 100%;
       }
     }
+    color: #868e96;
+    .logoutbtn {
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      button {
+        padding: 5px;
+        border: 0;
+        font-weight: bold;
+        background: none;
+        transition: 0.3s;
+        border-radius: 5px 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+        &:hover {
+          box-sizing: border-box;
+          background-color: #adb5bd;
+          color: #fff;
+        }
+      }
+    }
   }
   .section {
     padding: 0;
@@ -58,6 +82,8 @@
       border-radius: 10px;
       margin-bottom: 10px;
       background-color: #f9fafc;
+      background-color: #e9ecef;
+      
       time {
         letter-spacing: 0;
         display: block;

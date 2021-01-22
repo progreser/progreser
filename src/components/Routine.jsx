@@ -50,6 +50,11 @@ const Lilist = ({ routines }) => {
     );
   });
 };
+let timeId = time => {
+  setTimeout(() => {
+    console.log('알람입니다');
+  }, time);
+};
 
 const Routine = ({ routines, getRoutine, onLogout, history }) => {
   useEffect(() => {

@@ -27,6 +27,7 @@ const Lilist = ({ routines }) => {
   const checkDay = allDays.filter(today => today.id === boldDay);
 
   const StyleDay = ({ days }) => {
+    console.log(days);
     return days.map(day => {
       return checkDay[0].day === day ? (
         <span style={{ color: 'black' }}>{day}</span>
@@ -35,8 +36,8 @@ const Lilist = ({ routines }) => {
       );
     });
   };
-
   return routines.map(routine => {
+    console.log(routines);
     return (
       <li className="Routine-list" key={routine.id}>
         {routine.routine}

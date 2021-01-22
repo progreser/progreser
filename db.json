@@ -14,6 +14,19 @@
       "birth": "123",
       "routines": [
         {
+          "id": 1611226465692,
+          "routine": false,
+          "day": [
+            "수",
+            "목",
+            "금"
+          ],
+          "alram": false,
+          "startTime": "03:06",
+          "endTime": "02:07",
+          "frequency": "5분 간격 3번 울리기"}
+        ,
+        {
           "id": 1611241834331,
           "routine": "sdfsdf",
           "day": [
@@ -26,78 +39,6 @@
           "frequency": "1분단위로 3번 울리기",
           "alarmSound": "bell"
         },
-        {
-          "id": 1611241835844,
-          "routine": "sdfsdf",
-          "day": [
-            "수",
-            "목"
-          ],
-          "alram": true,
-          "startTime": "04:14",
-          "endTime": "06:07",
-          "frequency": "1분단위로 3번 울리기",
-          "alarmSound": "bell"
-        },
-        {
-          "id": 1611241868184,
-          "routine": "sdfsdf",
-          "day": [
-            "수",
-            "목"
-          ],
-          "alram": true,
-          "startTime": "04:14",
-          "endTime": "06:07",
-          "frequency": "1분단위로 3번 울리기",
-          "alarmSound": "bell"
-        },
-        {
-          "id": 1611242182147,
-          "routine": "hyfghfh",
-          "day": [
-            "수",
-            "목"
-          ],
-          "alram": true,
-          "startTime": "03:00",
-          "endTime": "05:00",
-          "frequency": false,
-          "alarmSound": "none"
-        },
-        {
-          "id": 1611242202793,
-          "routine": "fdhfhdh",
-          "day": [
-            "수",
-            "목"
-          ],
-          "alram": true,
-          "startTime": "04:06",
-          "endTime": "06:07",
-          "frequency": false,
-          "alarmSound": "none"
-        },
-        {
-          "id": 1611242223116,
-          "routine": "dfgd",
-          "day": [],
-          "alram": true,
-          "startTime": "06:05",
-          "endTime": "12:07",
-          "frequency": false,
-          "alarmSound": "none"
-        },
-        {
-          "id": 1611242239509,
-          "routine": "sdfsff",
-          "day": [],
-          "alram": false,
-          "startTime": "06:07",
-          "endTime": "07:05",
-          "frequency": false,
-          "alarmSound": "none"
-        }
       ]
     },
     {

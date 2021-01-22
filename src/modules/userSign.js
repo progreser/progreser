@@ -16,8 +16,7 @@ export const signupRemove = createAction(SIGNUPREMOVE);
 const signinfo = handleActions(
   {
     [SIGNUPSTART]: state => ({ ...state }),
-    [SIGNUPSUCCESS]: (state, { payload }) => ({
-      ...state,
+    [SIGNUPSUCCESS]: (_, { payload }) => ({
       ...payload,
     }),
     [SIGNUPFAIL]: (state, { payload }) => ({ ...state, error: payload }),
@@ -40,8 +39,14 @@ function* signSaga({ payload }) {
       birth: payload['user-birth'],
       routine: [],
     };
-    yield put(signupSuccess(payload));
+    const stateUser = {
+      id: payload['user-id'],
+      name: payload['user-name'],
+      birth: payload['user-birth'],
+      routine: [],
+    };
     yield call(axios.post, `/users`, signuser);
+    yield put(signupSuccess(stateUser));
     yield put(push('/login'));
   } catch (error) {
     yield put(signupFail(error));

@@ -5,7 +5,7 @@ import NewRoutine from '../components/NewRoutine';
 import getAdd, { getStart } from '../modules/getRoutine';
 import { newRemove, newStart } from '../modules/newRoutine';
 
-const NewRoutineContainer = () => {
+const NewRoutineContainer = ({ history }) => {
   const token = localStorage.getItem('token');
   const dispatch = useDispatch();
   if (token === null) {
@@ -17,7 +17,7 @@ const NewRoutineContainer = () => {
     dispatch(getAdd(routine));
   };
   const onRemoveRoutine = () => dispatch(newRemove());
-  return <NewRoutine onRoutine={onRoutine} onRemoveRoutine={onRemoveRoutine} />;
+  return <NewRoutine history={history} onRoutine={onRoutine} onRemoveRoutine={onRemoveRoutine} />;
 };
 
 export default NewRoutineContainer;

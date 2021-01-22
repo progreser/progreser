@@ -5,7 +5,7 @@ import { Form, Input, Checkbox, Switch, Select, TimePicker } from 'antd';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import date from 'date-and-time';
 
-const NewRoutine = ({ onRoutine }) => {
+const NewRoutine = ({ onRoutine, history }) => {
   const form = useRef();
   const audio = useRef();
 
@@ -53,6 +53,9 @@ const NewRoutine = ({ onRoutine }) => {
     },
     [onRoutine],
   );
+  const cancelBtn = () => {
+    history.push('/');
+  };
 
   return (
     <div className="NewRoutine">
@@ -109,7 +112,7 @@ const NewRoutine = ({ onRoutine }) => {
           </Form.Item>
         </div>
         <div className="button-wrap">
-          <button className="button" type="reset">
+          <button className="button" onClick={cancelBtn} type="reset">
             취소
           </button>
           <button className="button" type="submit">

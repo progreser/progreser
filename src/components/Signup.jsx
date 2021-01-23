@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import Modal from '../ModalPortal/Modal';
 import MyModal from '../ModalPortal/MyModal/MyModal';
 import userService from '../modules/services/AuthService';
 import './Signup.scss';
@@ -11,7 +12,11 @@ export default function Signup({ onSign }) {
   const failid = useRef();
   const birthday = useRef();
   const formData = useRef();
+  const [visible, setVisible] = useState(false);
+  const show = () => setVisible(true);
+  const hide = () => setVisible(false);
 
+  console.log(visible);
   const [checked, setChecked] = useState({
     check: false,
     ok: false,
@@ -35,7 +40,7 @@ export default function Signup({ onSign }) {
   );
   const click = async e => {
     e.preventDefault();
-
+    show();
     const userId = await userService.getUser(id.current.value);
     console.log(id.current.value);
     console.log(checked);
@@ -103,6 +108,11 @@ export default function Signup({ onSign }) {
             <span>{checked.email && '이메일 형식이 아닙니다.'}</span>
           </label>
           <input type="email" onChange={emailChange} required name="user-id" ref={id} />
+          {visible && (
+            <Modal>
+              <MyModal visible={visible} onClick={hide} />
+            </Modal>
+          )}
           <button onClick={click}>중복 확인</button>
         </div>
         <div>
